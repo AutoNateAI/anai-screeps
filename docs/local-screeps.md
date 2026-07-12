@@ -7,6 +7,8 @@
 - Container name: `autonate-screeps`
 - Local URL: `http://localhost:21025`
 - Steam client custom server: `localhost:21025`
+- Local onboarding UI: `http://localhost:21025/local/`
+- Default Steam-client mapped user: `autonate`
 
 ## Local Auth Mode
 
@@ -32,6 +34,22 @@ The `steamKey: local-dev-placeholder` config value is only there to satisfy the 
 The Steam client still calls `/api/auth/steam-ticket` when connecting to a private server. In local-only mode that endpoint is patched to issue a token for `SCREEPS_LOCAL_DEFAULT_USER`, so the client can enter the world without a Steam Web API key.
 
 The supported Steam path can still be used by removing local-only mode and setting a real `STEAM_KEY`, but it is not required for this local learning server.
+
+## What Was Patched
+
+The repeatable patch script is:
+
+```sh
+node scripts/patch-local-screeps-auth.js
+```
+
+It patches generated files under `screeps-server/node_modules/`:
+
+- `@screeps/backend/lib/game/server.js`: skips Steam/greenworks startup when `SCREEPS_LOCAL_PASSWORD_AUTH_ONLY=1`.
+- `@screeps/backend/lib/game/api/auth.js`: maps the Steam client's `/api/auth/steam-ticket` call to `SCREEPS_LOCAL_DEFAULT_USER`.
+- `screepsmod-auth/lib/backend.js`: hides Steam auth from auth metadata and local menus.
+
+Because these are generated dependency files, rerun the patch whenever `screeps-server/node_modules/` is regenerated.
 
 ## Server Config
 
@@ -115,6 +133,15 @@ http://localhost:21025/local/
 
 Use it to create profiles and review existing local profiles.
 
+Current first profile:
+
+```text
+Username: autonate
+Password: 1234
+```
+
+The Steam client connection is mapped to `SCREEPS_LOCAL_DEFAULT_USER=autonate`, so the client may not ask for this password during the private-server ticket flow. The password is still useful for API/password-auth flows.
+
 The same registration can be done through the local registration API:
 
 ```sh
@@ -133,7 +160,17 @@ Expected result:
 {"ok":1}
 ```
 
-Then open the Steam Screeps: World client, add `localhost:21025` as a custom/private server, and log in with that local username and password.
+Then open the Steam Screeps: World client, add `localhost:21025` as a custom/private server, and connect.
+
+Use these private-server connection settings:
+
+```text
+Host: localhost
+Port: 21025
+Server password: blank
+```
+
+Do not put the profile password in the server password field. `Server password` only applies if we set `SERVER_PASSWORD` in `.env`, which we have not done.
 
 The older password helper page is still available at:
 
@@ -148,3 +185,29 @@ For this local-only setup, the direct registration API is the cleaner first-acco
 - `.env` stays local because it contains Airtable credentials.
 - Runtime files generated under `screeps-server/` are ignored except for `config.yml`.
 - The saved planning conversation is in `input_convos/chatgpt/convo_000.md`.
+
+## Dashboard Counters
+
+The dashboard is provided by `screepsmod-admin-utils`.
+
+On a fresh local world, the dashboard can show existing owned rooms and creeps before the `autonate` player has placed a spawn. These counts come from all controller/creep objects with a `user` field, including seeded NPC/system users such as invaders/source keepers/capture bot state.
+
+Use `/stats` to inspect the aggregate server counters:
+
+```sh
+curl http://localhost:21025/stats
+```
+
+The player-specific part is the `users` array. If `users` is empty, the dashboard-owned rooms and creeps are not player progress for `autonate` yet.
+
+## First Play Session
+
+After connecting in the Screeps: World client:
+
+1. Choose an unowned room.
+2. Place your first spawn.
+3. Name it something simple, such as `Spawn1`.
+4. Use the in-game tutorial prompts for the first harvesting and spawning loop.
+5. Record what happened in the learning notes before changing server configuration.
+
+Keep the first bot simple: harvest, transfer, spawn replacement workers, then upgrade the controller.

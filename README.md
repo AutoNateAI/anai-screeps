@@ -29,4 +29,16 @@ This repo uses a documented local-only auth patch so the server can run without 
 
 Open `http://localhost:21025`, then add `localhost:21025` as a custom server in the Steam Screeps client.
 
+Use the local onboarding UI to create or choose profiles:
+
+```text
+http://localhost:21025/local/
+```
+
+The current local Steam-client mapping is:
+
+```text
+SCREEPS_LOCAL_DEFAULT_USER=autonate
+```
+
 See `docs/local-screeps.md` for the current workflow notes.
