@@ -25,7 +25,7 @@ docker run --platform linux/arm64 -d \
   screepers/screeps-launcher:main
 ```
 
-The launcher requires `STEAM_KEY` in `.env`. See `docs/local-screeps.md`.
+This repo uses a documented local-only auth patch so the server can run without a Steam Web API key. See `docs/local-screeps.md`.
 
 Open `http://localhost:21025`, then add `localhost:21025` as a custom server in the Steam Screeps client.
 

@@ -8,23 +8,27 @@
 - Local URL: `http://localhost:21025`
 - Steam client custom server: `localhost:21025`
 
-## Required Local Secret
+## Local Auth Mode
 
-The launcher exits before the HTTP server is ready unless `STEAM_KEY` is available.
+The stock Docker launcher expects Steam auth during backend startup. For this learning repo, we patch the generated backend to skip Steam startup and use `screepsmod-auth` username/password auth.
 
-Get a Steam Web API key from:
-
-```text
-https://steamcommunity.com/dev/apikey
-```
-
-Add it to the local `.env` file:
+Add this local-only flag to `.env`:
 
 ```sh
-STEAM_KEY=your_key_here
+SCREEPS_LOCAL_PASSWORD_AUTH_ONLY=1
 ```
 
-The real `.env` is ignored and should not be committed.
+Apply the patch after dependencies exist:
+
+```sh
+node scripts/patch-local-screeps-auth.js
+```
+
+If `node_modules` is regenerated under `screeps-server/`, rerun the patch script.
+
+The `steamKey: local-dev-placeholder` config value is only there to satisfy the Docker entrypoint's preflight check. The local patch makes `SCREEPS_LOCAL_PASSWORD_AUTH_ONLY=1` take precedence so the backend does not use that placeholder for Steam authentication.
+
+The supported Steam path can still be used by removing local-only mode and setting a real `STEAM_KEY`, but it is not required for this local learning server.
 
 ## Server Config
 
@@ -37,6 +41,8 @@ pinnedPackages:
   passport-steam: 1.0.17
   minipass-fetch: 2.1.2
   express-rate-limit: 6.7.0
+
+steamKey: local-dev-placeholder
 
 mods:
   - screepsmod-auth
@@ -95,6 +101,16 @@ docker rm autonate-screeps
 ```
 
 Then rerun the foreground command.
+
+## Account Setup
+
+After the server starts, create a local account at:
+
+```text
+http://localhost:21025/authmod/password/
+```
+
+This uses `screepsmod-auth` local password auth instead of Steam sign-in.
 
 ## Notes
 

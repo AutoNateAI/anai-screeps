@@ -5,6 +5,8 @@ pinnedPackages:
   minipass-fetch: 2.1.2
   express-rate-limit: 6.7.0
 
+steamKey: local-dev-placeholder
+
 mods:
   - screepsmod-auth
   - screepsmod-admin-utils
