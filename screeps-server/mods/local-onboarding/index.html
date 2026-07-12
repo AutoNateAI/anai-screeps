@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AutoNateAI Screeps Local</title>
+    <link rel="stylesheet" href="/local/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">AutoNateAI local Screeps</p>
+          <h1>Choose a profile and enter the world.</h1>
+          <p class="copy">Create local learning profiles for this private server, then use the Screeps: World client with <code>localhost:21025</code>.</p>
+        </div>
+        <a class="dashboard-link" href="/web/">Dashboard</a>
+      </section>
+
+      <section class="grid">
+        <form id="register-form" class="panel">
+          <h2>Create Profile</h2>
+          <label>
+            Username
+            <input name="username" autocomplete="username" placeholder="autonate" required minlength="3" maxlength="32" pattern="[A-Za-z0-9_-]+">
+          </label>
+          <label>
+            Email
+            <input name="email" autocomplete="email" placeholder="autonate@local">
+          </label>
+          <label>
+            Password
+            <input name="password" autocomplete="new-password" type="password" required minlength="4">
+          </label>
+          <label>
+            Repeat Password
+            <input name="password2" autocomplete="new-password" type="password" required minlength="4">
+          </label>
+          <button type="submit">Create Profile</button>
+          <p id="form-status" class="status" role="status"></p>
+        </form>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Profiles</h2>
+            <button id="refresh" type="button" class="secondary">Refresh</button>
+          </div>
+          <div id="profiles" class="profiles"></div>
+        </section>
+      </section>
+
+      <section class="panel next">
+        <h2>Play</h2>
+        <p id="selected-profile" class="selected">No profile selected yet.</p>
+        <ol>
+          <li>Open <strong>Screeps: World</strong> in Steam.</li>
+          <li>Add custom/private server <code>localhost:21025</code>.</li>
+          <li>Log in with one of the local profiles above.</li>
+        </ol>
+        <a class="steam-link" href="steam://rungameid/464350">Open Screeps: World</a>
+      </section>
+    </main>
+    <script src="/local/app.js"></script>
+  </body>
+</html>

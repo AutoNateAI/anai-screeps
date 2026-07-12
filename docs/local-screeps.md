@@ -104,7 +104,15 @@ Then rerun the foreground command.
 
 ## Account Setup
 
-After the server starts, create a local account through the local registration API:
+After the server starts, open the local onboarding page:
+
+```text
+http://localhost:21025/local/
+```
+
+Use it to create profiles and review existing local profiles.
+
+The same registration can be done through the local registration API:
 
 ```sh
 curl -X POST http://localhost:21025/api/register/submit \
