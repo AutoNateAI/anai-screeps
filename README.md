@@ -42,3 +42,7 @@ SCREEPS_LOCAL_DEFAULT_USER=autonate
 ```
 
 See `docs/local-screeps.md` for the current workflow notes.
+
+## Tutorials
+
+- `docs/tutorials/01-first-spawn-and-harvester.md`
