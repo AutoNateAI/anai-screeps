@@ -8,6 +8,24 @@
 - Local URL: `http://localhost:21025`
 - Steam client custom server: `localhost:21025`
 
+## Required Local Secret
+
+The launcher exits before the HTTP server is ready unless `STEAM_KEY` is available.
+
+Get a Steam Web API key from:
+
+```text
+https://steamcommunity.com/dev/apikey
+```
+
+Add it to the local `.env` file:
+
+```sh
+STEAM_KEY=your_key_here
+```
+
+The real `.env` is ignored and should not be committed.
+
 ## Server Config
 
 The first boot stays minimal so server, auth, and client connection issues are easy to isolate:
@@ -32,14 +50,23 @@ Bots can be added after the base loop works.
 
 ## Commands
 
-First foreground run:
+First detached run:
 
 ```sh
-docker run --restart=unless-stopped \
+docker run --platform linux/arm64 -d \
+  --restart=unless-stopped \
   --name autonate-screeps \
+  --env-file .env \
   -v "$PWD/screeps-server:/screeps" \
   -p 21025:21025 \
   screepers/screeps-launcher:main
+```
+
+If `autonate-screeps` already exists after a failed first run, remove it before recreating:
+
+```sh
+docker stop autonate-screeps
+docker rm autonate-screeps
 ```
 
 Follow logs:
