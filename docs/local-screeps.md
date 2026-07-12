@@ -104,13 +104,33 @@ Then rerun the foreground command.
 
 ## Account Setup
 
-After the server starts, create a local account at:
+After the server starts, create a local account through the local registration API:
+
+```sh
+curl -X POST http://localhost:21025/api/register/submit \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "username": "autonate",
+    "email": "autonate@local",
+    "password": "choose-a-local-password"
+  }'
+```
+
+Expected result:
+
+```json
+{"ok":1}
+```
+
+Then open the Steam Screeps: World client, add `localhost:21025` as a custom/private server, and log in with that local username and password.
+
+The older password helper page is still available at:
 
 ```text
 http://localhost:21025/authmod/password/
 ```
 
-This uses `screepsmod-auth` local password auth instead of Steam sign-in.
+For this local-only setup, the direct registration API is the cleaner first-account path.
 
 ## Notes
 
