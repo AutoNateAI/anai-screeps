@@ -16,6 +16,7 @@ Add this local-only flag to `.env`:
 
 ```sh
 SCREEPS_LOCAL_PASSWORD_AUTH_ONLY=1
+SCREEPS_LOCAL_DEFAULT_USER=autonate
 ```
 
 Apply the patch after dependencies exist:
@@ -27,6 +28,8 @@ node scripts/patch-local-screeps-auth.js
 If `node_modules` is regenerated under `screeps-server/`, rerun the patch script.
 
 The `steamKey: local-dev-placeholder` config value is only there to satisfy the Docker entrypoint's preflight check. The local patch makes `SCREEPS_LOCAL_PASSWORD_AUTH_ONLY=1` take precedence so the backend does not use that placeholder for Steam authentication.
+
+The Steam client still calls `/api/auth/steam-ticket` when connecting to a private server. In local-only mode that endpoint is patched to issue a token for `SCREEPS_LOCAL_DEFAULT_USER`, so the client can enter the world without a Steam Web API key.
 
 The supported Steam path can still be used by removing local-only mode and setting a real `STEAM_KEY`, but it is not required for this local learning server.
 

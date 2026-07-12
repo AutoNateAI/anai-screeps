@@ -147,6 +147,38 @@ patchFile('screeps-server/node_modules/@screeps/backend/lib/game/server.js', [
   ]
 ]);
 
+patchFile('screeps-server/node_modules/@screeps/backend/lib/game/api/auth.js', [
+  [
+`router.post('/steam-ticket', jsonResponse(request => {
+
+    var doAuth;
+`,
+`router.post('/steam-ticket', jsonResponse(request => {
+
+    if (process.env.SCREEPS_LOCAL_PASSWORD_AUTH_ONLY === '1') {
+        const username = process.env.SCREEPS_LOCAL_DEFAULT_USER || 'autonate';
+        return db.users.findOne({username})
+        .then(user => {
+            if (!user) {
+                return q.reject('local default user not found: ' + username);
+            }
+            console.log(\`Local client sign in: \${user.username} (\${user._id}), IP=\${request.ip}\`);
+            return authlib.genToken(user._id)
+            .then(token => ({token, steamid: 'local-' + user._id}));
+        });
+    }
+
+    var doAuth;
+`
+  ],
+  [
+`        steam: _.pick(request.user.steam, ['id', 'displayName', 'ownership','steamProfileLinkHidden']),
+`,
+`        steam: _.pick(request.user.steam || {}, ['id', 'displayName', 'ownership','steamProfileLinkHidden']),
+`
+  ]
+]);
+
 patchFile('screeps-server/node_modules/screepsmod-auth/lib/backend.js', [
   [
 `    allowRegistration: !process.env.SERVER_PASSWORD,
