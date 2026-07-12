@@ -13,6 +13,13 @@
 The first boot stays minimal so server, auth, and client connection issues are easy to isolate:
 
 ```yaml
+pinnedPackages:
+  ssri: 8.0.1
+  cacache: 15.3.0
+  passport-steam: 1.0.17
+  minipass-fetch: 2.1.2
+  express-rate-limit: 6.7.0
+
 mods:
   - screepsmod-auth
   - screepsmod-admin-utils
@@ -67,4 +74,3 @@ Then rerun the foreground command.
 - `.env` stays local because it contains Airtable credentials.
 - Runtime files generated under `screeps-server/` are ignored except for `config.yml`.
 - The saved planning conversation is in `input_convos/chatgpt/convo_000.md`.
-
