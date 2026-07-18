@@ -146,6 +146,8 @@ If you built ramparts with real hit points in Episode 7, try positioning a defen
 
 Because the endpoint is just a `curl` call, nothing stops you from running it again once the first invader is dealt with — call it a second and third time and watch whether your defender population keeps pace, or whether two defenders start struggling against back-to-back waves. That repeatability is the whole point, and Episode 13 turns it into an actual practice loop.
 
+If TooAngel or another NPC bot is placed nearby (`docs/local-screeps.md`), it may eventually send creeps at your room on its own — that's not a scripted wave, it's a real opponent's actual decision. Treat any contact from it as a bonus data point, not something to force on a schedule.
+
 ## Troubleshooting
 
 If the defender never attacks despite a hostile being present, check `creep.getActiveBodyparts(ATTACK)` and `creep.getActiveBodyparts(RANGED_ATTACK)` directly — a body part reduced to 0 hp by damage stops counting as "active" even though it's still listed in `creep.body`.

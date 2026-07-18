@@ -242,6 +242,8 @@ Expected result, while the invader is alive: an array with one creep in it, not 
 
 If the endpoint doesn't produce an invader — a future engine update changed something the mod depends on, for instance — the guaranteed fallback is the client's own **Invasion** tab in the room side panel: click **Create an invader**, then click an exit tile (it highlights differently once you're hovering a valid one). That's a first-party client feature, not something this repo has to maintain.
 
+If this server has an NPC bot placed nearby (`docs/local-screeps.md` covers `bots.spawn(...)`), you may see `runTowers()` fire on its creeps too, whenever they wander close enough — that's real, unscripted hostile contact on top of whatever you trigger on demand.
+
 ## Troubleshooting
 
 If `createConstructionSite` fails for the tower, confirm RCL3 and check the tile isn't already occupied.

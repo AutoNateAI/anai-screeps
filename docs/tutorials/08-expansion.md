@@ -30,7 +30,7 @@ Game.map.describeExits(Game.spawns.Spawn1.room.name)
 
 Expected result: an object like `{ "1": "W7N4", "3": "W6N3", "5": "W7N2", "7": "W8N3" }`. The keys are direction constants (`1` = top, `3` = right, `5` = bottom, `7` = left); the values are the adjacent room names.
 
-Pick one. Move a creep or scroll the client map into it to confirm it's unowned — an empty `controller.owner` and no hostile structures.
+Pick one. Move a creep or scroll the client map into it to confirm it's unowned — an empty `controller.owner` and no hostile structures. If this server has an NPC bot placed (see `docs/local-screeps.md`), check that it hasn't already claimed the room you're eyeing — `controller.owner.username` would show the bot's name (`simplebot` or `tooangel`) instead of being empty.
 
 Store your choice where the rest of this tutorial's code can find it:
 

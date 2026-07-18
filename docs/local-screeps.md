@@ -205,6 +205,38 @@ curl http://localhost:21025/local/api/sparring/health
 
 Expected result: `{"ok":1,"message":"sparring-ground mod is loaded"}`.
 
+## NPC Bot Opponents
+
+`config.yml` registers two real, community-maintained bot AIs under `bots:`. `screeps-launcher` downloads both packages automatically at boot — after that, it's local code running in the same container, with no ongoing internet dependency:
+
+```yaml
+bots:
+  simplebot: screepsbot-zeswarm
+  tooangel: screeps-bot-tooangel
+```
+
+- `screepsbot-zeswarm` ([AlinaNova21/ZeSwarm](https://github.com/AlinaNova21/ZeSwarm)) is the bot already sketched in this repo's original planning notes (`input_convos/chatgpt/convo_000.md`) — a general-purpose economy bot.
+- `screeps-bot-tooangel` ([TooAngel/screeps](https://github.com/TooAngel/screeps)) is documented to include automatic base building, automatic attack behavior, and claiming new rooms as its GCL climbs — the more combat-relevant of the two.
+
+Registering a bot in `config.yml` doesn't place it anywhere by itself. Put one into a room from the server CLI:
+
+```sh
+docker exec -it autonate-screeps screeps-launcher cli
+```
+
+```js
+bots.spawn('tooangel', 'W3N1')
+```
+
+Replace `'W3N1'` with a real unowned room name, ideally a few rooms away from `autonate`'s colony so it has room to grow before the two colonies' territory overlaps. Optional settings: `bots.spawn('tooangel', 'W3N1', { cpu: 100, gcl: 1 })`. Swap `'tooangel'` for `'simplebot'` to place the other one instead — nothing stops you from running both.
+
+This is a different kind of NPC than the sparring-ground mod's invader waves:
+
+- The sparring-ground mod gives fast, controllable, on-demand pressure — good for iterating on defense code quickly (Episodes 7, 12, 13).
+- A bot gives a real, persistent, autonomously-playing rival colony — good for scouting practice (Episode 11), and for observing what an actual opponent's economy, expansion, and (for TooAngel) attacks look like over time, not just a scripted wave.
+
+Exact playstyle is worth observing directly rather than assuming — both are third-party code this repo doesn't control, and behavior can change between versions.
+
 ## Notes
 
 - `.env` stays local because it contains Airtable credentials.

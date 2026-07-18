@@ -117,6 +117,16 @@ Expected result: an object keyed by room name, each value holding `lastSeen`, `o
 
 This is the point of scouting: the data outlives the creep's presence. You can make a decision about a room hours after your scout last visited it.
 
+## Step 4.5: Scout a Real Opponent, If One Exists
+
+If an NPC bot is placed on this server (`docs/local-screeps.md` covers `bots.spawn('tooangel', '<room>')` or `'simplebot'`), add its room to `Memory.scoutTargets` too. `recordIntel` already captures `owner` — when your scout reaches that room, you'll see a real value there instead of `null`:
+
+```js
+Memory.rooms['<bot-room-name>'].owner
+```
+
+Expected result: the bot's username (`tooangel` or `simplebot`), not empty. This is the difference between scouting theory and scouting practice — every other room in this episode is empty until proven otherwise; a bot's room is actually owned by something that's actively playing, the same way a real opponent's room would be.
+
 ## Step 5: Use Intel to Pick an Expansion Target
 
 Instead of the manual "move a creep and look" process from Episode 8, query what you already know:
@@ -164,6 +174,7 @@ After completing the tutorial, write down:
 - What would happen to your Episode 8 remote-mining setup if `Memory.rooms[Memory.remoteRoom].hostileCount` suddenly became nonzero? Does anything in your code react to that yet?
 - Why record `sources` count instead of the full source objects or IDs?
 - What's the next piece of intel you'd want to track that isn't in `recordIntel` yet — mineral type, terrain quality, distance from home?
+- If an NPC bot is running on this server, how far away is its room from yours? Would you want a scout watching it continuously, or is a one-time snapshot enough?
 
 ## Next: Episode 12 — The First Skirmish
 
