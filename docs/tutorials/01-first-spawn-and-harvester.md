@@ -2,11 +2,11 @@
 
 *Episode 1: Touchdown*
 
-The hatch is open. The room is quiet. Your collaborator is still narrating the scan results, but the console is yours now.
+The hatch is open. The room is quiet. Your collaborator is still narrating the scan results, but the console is yours now — welcome to Day 1, no orientation packet included.
 
-Somewhere else on this planet, other Foundry architects are doing exactly what you're about to do: picking a room, placing a spawn, and watching whether their first worker completes a single lap without dying, getting stuck, or standing still. Nobody skips this step. Nobody gets to.
+Somewhere else on this planet, other Foundry architects are doing exactly what you're about to do: picking a room, placing a spawn, and watching whether their first worker can complete one single lap without dying, getting stuck, or just standing there like it's waiting on a code review. Nobody skips this step. Nobody gets to — not even the ones who've shipped to production for a decade.
 
-This is the first system you'll ship. Keep it small. Keep it visible. Everything after this builds on whatever you learn watching it run.
+This is the first system you'll ship. Keep it small. Keep it visible. Everything after this builds on whatever you learn watching it run, so resist the urge to get clever before you've even proven the loop works.
 
 ## Goal
 
@@ -84,6 +84,8 @@ Checkpoint:
 - The room now has a spawn named `Spawn1`.
 - The top-right user menu shows you are connected as `autonate`.
 
+> 📸 **Screenshot placeholder:** `Spawn1` freshly placed in the client, before any creep exists — this is the visual "checkpoint" a new reader can compare their own room against.
+
 ## Step 3: Create One Harvester Manually
 
 Open the in-game console and run:
@@ -148,6 +150,27 @@ Checkpoint:
 - It harvests until full.
 - It returns to `Spawn1`.
 - It transfers energy into the spawn.
+
+This is the decision your script re-runs every single tick — the entire loop, drawn out:
+
+```mermaid
+flowchart TD
+    Start([Tick runs]) --> HasCreep{Does Harvester1 exist?}
+    HasCreep -- No --> End([Do nothing this tick])
+    HasCreep -- Yes --> HasRoom{Free capacity > 0?}
+    HasRoom -- Yes --> Harvest[harvest source]
+    Harvest --> InRange1{In range?}
+    InRange1 -- No --> Move1[moveTo source]
+    InRange1 -- Yes --> End
+    Move1 --> End
+    HasRoom -- No --> Transfer[transfer energy to Spawn1]
+    Transfer --> InRange2{In range?}
+    InRange2 -- No --> Move2[moveTo Spawn1]
+    InRange2 -- Yes --> End
+    Move2 --> End
+```
+
+Every role in every later episode is a variation on this exact shape: check state, act or move closer, repeat next tick.
 
 ## Step 5: Observe the Loop
 
@@ -258,7 +281,7 @@ After completing the tutorial, write down:
 
 ## Next: Episode 2 — Two Sources, One Colony
 
-Your collaborator flags it before you do: "Harvester1 only knows about `sources[0]`. The second you spawn a friend for it, they're going to fight over the same source and let the other one sit there untouched."
+Your collaborator flags it before you do: "Harvester1 only knows about `sources[0]`. The second you spawn a friend for it, they're going to fight over the same source and let the other one sit there untouched — real 'two founders, one laptop' behavior."
 
 That's the problem Episode 2 picks up: teaching the colony to assign work instead of guessing at it.
 

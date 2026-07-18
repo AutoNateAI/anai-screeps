@@ -47,6 +47,10 @@ See `docs/local-screeps.md` for the current workflow notes.
 
 - `docs/world-orientation.md`
 
+## Player Guide (Free, No Program Required)
+
+Just want to play and get competitive, no narrative or curriculum attached? Start at `docs/player-guide/README.md` — the same tested code and mechanics as the tutorials below, stripped down to a fast reference.
+
 ## The Story
 
 Every tutorial is an episode in AutoNate's run through the Foundry.
@@ -57,4 +61,32 @@ Every tutorial is an episode in AutoNate's run through the Foundry.
 
 ## Tutorials
 
-- `docs/tutorials/01-first-spawn-and-harvester.md` — Episode 1: Touchdown
+The full season is written — see `docs/roadmap.md` for loglines and arc groupings. In order:
+
+1. `docs/tutorials/01-first-spawn-and-harvester.md` — Touchdown
+2. `docs/tutorials/02-target-selection.md` — Two Sources, One Colony
+3. `docs/tutorials/03-roles.md` — Job Descriptions
+4. `docs/tutorials/04-controller-upgrading.md` — The Controller's Price
+5. `docs/tutorials/05-construction-and-roads.md` — Paved Roads
+6. `docs/tutorials/06-haulers-and-static-mining.md` — Haulers and Miners
+7. `docs/tutorials/07-defense.md` — Under Siege
+8. `docs/tutorials/08-expansion.md` — Beyond the Border
+9. `docs/tutorials/09-cpu-and-memory.md` — The Weight of Memory
+10. `docs/tutorials/10-ai-collaboration.md` — Two Minds
+11. `docs/tutorials/11-scouting.md` — Scouting the Dark
+12. `docs/tutorials/12-pvp-fundamentals.md` — The First Skirmish
+13. `docs/tutorials/13-sparring-ground.md` — The Sparring Ground
+14. `docs/tutorials/14-running-the-league.md` — Open the Gates
+
+## League
+
+- `league/README.md` — submission structure used by Episode 14
+- `league/scoring-rubric.md` — the rubric template for scoring a match
+
+## Journal
+
+- `docs/journal/TEMPLATE.md` — copy this for your own debugging-session entries (Episode 10)
+
+## Diagrams and Screenshots
+
+Every episode, the orientation doc, and the player guide now include Mermaid diagrams for the strategy/architecture concepts (renders natively on GitHub). Screenshot spots are marked inline with 📸 placeholders — see `docs/SCREENSHOTS-NEEDED.md` for the full checklist and where to drop real images in.
