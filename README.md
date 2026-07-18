@@ -65,6 +65,10 @@ If the mirror is missing, refresh it while online:
 wget --mirror --page-requisites --convert-links --adjust-extension --no-parent --domains docs.screeps.com --directory-prefix local-reference/screeps-docs-official https://docs.screeps.com/
 ```
 
+## Offline Video Study
+
+Use [docs/offline-video-study.md](docs/offline-video-study.md) for the local `/Users/autonate/tapes/` audit and the authorized offline-study archive workflow.
+
 ## Orientation
 
 - `docs/world-orientation.md`
