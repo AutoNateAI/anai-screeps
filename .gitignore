@@ -2,6 +2,9 @@
 .DS_Store
 node_modules/
 
+# Local offline reference material.
+local-reference/
+
 # Screeps private server runtime state. Keep config.yml, ignore generated data.
 screeps-server/*
 !screeps-server/config.yml
