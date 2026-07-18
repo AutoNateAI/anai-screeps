@@ -26,44 +26,44 @@ Start at `docs/story/00-prologue.md` if you haven't. Terms and character rules l
 | # | Episode | Logline | Tutorial | Status |
 | --- | --- | --- | --- | --- |
 | 1 | Touchdown | Claim a room, place `Spawn1`, hand-spawn one harvester, close the harvest-to-transfer loop, add auto-respawn. | `docs/tutorials/01-first-spawn-and-harvester.md` | Live |
-| 2 | Two Sources, One Colony | Stop every harvester from fighting over `sources[0]` by assigning sources through Memory. | `docs/tutorials/02-target-selection.md` | Coming next |
+| 2 | Two Sources, One Colony | Stop every harvester from fighting over `sources[0]` by assigning sources through Memory. | `docs/tutorials/02-target-selection.md` | Live |
 
 ## Arc II — Builder: Division of Labor
 
 | # | Episode | Logline | Tutorial | Status |
 | --- | --- | --- | --- | --- |
-| 3 | Job Descriptions | Split the one hardcoded script into harvester/upgrader roles; spawn by role count instead of by name. | `docs/tutorials/03-roles.md` | Planned |
-| 4 | The Controller's Price | Route energy into `upgradeController`; watch RCL climb and extensions unlock. | `docs/tutorials/04-controller-upgrading.md` | Planned |
-| 5 | Paved Roads | Construction sites, roads, and containers; separate "stand and harvest" from "carry and deliver." | `docs/tutorials/05-construction-and-roads.md` | Planned |
+| 3 | Job Descriptions | Split the one hardcoded script into harvester/upgrader roles; spawn by role count instead of by name. | `docs/tutorials/03-roles.md` | Live |
+| 4 | The Controller's Price | Route energy into `upgradeController`; watch RCL climb and extensions unlock. | `docs/tutorials/04-controller-upgrading.md` | Live |
+| 5 | Paved Roads | Construction sites, roads, and containers; separate "stand and harvest" from "carry and deliver." | `docs/tutorials/05-construction-and-roads.md` | Live |
 
 ## Arc III — Developer: The Machine Wakes
 
 | # | Episode | Logline | Tutorial | Status |
 | --- | --- | --- | --- | --- |
-| 6 | Haulers and Miners | Static miners drop energy into containers; dedicated haulers move it. The logistics split gets real. | `docs/tutorials/06-haulers-and-static-mining.md` | Planned |
-| 7 | Under Siege | First invader wave. Towers, ramparts, and the gap between "safe" and "undefended." | `docs/tutorials/07-defense.md` | Planned |
-| 8 | Beyond the Border | Claim or reserve a second room; remote mining and cross-room creep routing. | `docs/tutorials/08-expansion.md` | Planned |
+| 6 | Haulers and Miners | Static miners drop energy into containers; dedicated haulers move it. The logistics split gets real. | `docs/tutorials/06-haulers-and-static-mining.md` | Live |
+| 7 | Under Siege | First invader wave. Towers, ramparts, and the gap between "safe" and "undefended." | `docs/tutorials/07-defense.md` | Live |
+| 8 | Beyond the Border | Claim or reserve a second room; remote mining and cross-room creep routing. | `docs/tutorials/08-expansion.md` | Live |
 
 ## Arc IV — Studio Member: Refactor
 
 | # | Episode | Logline | Tutorial | Status |
 | --- | --- | --- | --- | --- |
-| 9 | The Weight of Memory | CPU budgeting, Memory hygiene, caching — code that survives its own growth. | `docs/tutorials/09-cpu-and-memory.md` | Planned |
-| 10 | Two Minds | Formalize the AI-collaboration workflow: which prompts unstick a bug, when to reject a suggestion, how to review AI-written code before it runs on a live colony. | `docs/tutorials/10-ai-collaboration.md` | Planned |
+| 9 | The Weight of Memory | CPU budgeting, Memory hygiene, caching — code that survives its own growth. | `docs/tutorials/09-cpu-and-memory.md` | Live |
+| 10 | Two Minds | Formalize the AI-collaboration workflow: which prompts unstick a bug, when to reject a suggestion, how to review AI-written code before it runs on a live colony. | `docs/tutorials/10-ai-collaboration.md` | Live |
 
 ## Arc V — Lead Developer: First Blood
 
 | # | Episode | Logline | Tutorial | Status |
 | --- | --- | --- | --- | --- |
-| 11 | Scouting the Dark | Reading a room you don't own; gathering intel before committing creeps or Memory to it. | `docs/tutorials/11-scouting.md` | Planned |
-| 12 | The First Skirmish | PvP fundamentals: boosted creeps, rampart tanking, reading a fight you didn't start. | `docs/tutorials/12-pvp-fundamentals.md` | Planned |
+| 11 | Scouting the Dark | Reading a room you don't own; gathering intel before committing creeps or Memory to it. | `docs/tutorials/11-scouting.md` | Live |
+| 12 | The First Skirmish | PvP fundamentals: boosted creeps, rampart tanking, reading a fight you didn't start. | `docs/tutorials/12-pvp-fundamentals.md` | Live |
 
 ## Arc VI — Architect: The League
 
 | # | Episode | Logline | Tutorial | Status |
 | --- | --- | --- | --- | --- |
-| 13 | The Arena | Screeps Arena as a fast-iteration lab for combat and pathing logic, then port the lessons back into the World bot. | `docs/tutorials/13-arena.md` | Planned |
-| 14 | Open the Gates | AutoNate stops playing solo and starts running the league: submissions, scoring, replays, and the next architect's drop pod. | `docs/tutorials/14-running-the-league.md` | Planned |
+| 13 | The Arena | Screeps Arena as a fast-iteration lab for combat and pathing logic, then port the lessons back into the World bot. | `docs/tutorials/13-arena.md` | Live |
+| 14 | Open the Gates | AutoNate stops playing solo and starts running the league: submissions, scoring, replays, and the next architect's drop pod. | `docs/tutorials/14-running-the-league.md` | Live |
 
 ## Notes for Future Episodes
 
