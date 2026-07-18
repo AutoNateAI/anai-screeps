@@ -1,5 +1,13 @@
 # Tutorial 01: First Spawn and Harvester
 
+*Episode 1: Touchdown*
+
+The hatch is open. The room is quiet. Your collaborator is still narrating the scan results, but the console is yours now.
+
+Somewhere else on this planet, other Foundry architects are doing exactly what you're about to do: picking a room, placing a spawn, and watching whether their first worker completes a single lap without dying, getting stuck, or standing still. Nobody skips this step. Nobody gets to.
+
+This is the first system you'll ship. Keep it small. Keep it visible. Everything after this builds on whatever you learn watching it run.
+
 ## Goal
 
 Get from a fresh local Screeps world to a working first room with:
@@ -247,4 +255,12 @@ After completing the tutorial, write down:
 - What did the creep do that surprised you?
 - What would make this script fail with two harvesters?
 - What should the next tutorial add: upgrading, building, or multiple roles?
+
+## Next: Episode 2 — Two Sources, One Colony
+
+Your collaborator flags it before you do: "Harvester1 only knows about `sources[0]`. The second you spawn a friend for it, they're going to fight over the same source and let the other one sit there untouched."
+
+That's the problem Episode 2 picks up: teaching the colony to assign work instead of guessing at it.
+
+See `docs/roadmap.md` for the full season.
 

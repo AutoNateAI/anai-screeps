@@ -2,6 +2,8 @@
 
 You wake up in a room you did not build.
 
+They call you AutoNate. It's a callsign, not a birth name — the Foundry gives it to every architect who ships out with nothing but a terminal, a spawn beacon, and an AI collaborator riding along. The full story of how you got here is in `docs/story/00-prologue.md`. This document is the world; that one is the plot.
+
 There is no avatar walking around with a sword. There is no quest marker waiting for you. There is only terrain, energy, a controller, a spawn, and the code you are willing to write.
 
 Screeps is a persistent programming world. The world keeps ticking whether you are staring at it or not. Your colony survives because your systems keep working. A good decision becomes a reusable behavior. A bad assumption becomes a broken economy. A missing fallback becomes an idle spawn. Every line of code either helps the colony adapt or teaches you why it failed.
@@ -169,4 +171,13 @@ Every answer becomes curriculum.
 Every bug becomes a lesson.
 
 Every working loop becomes a building block for the league.
+
+## The Story So Far
+
+This document is the world. The chronicle is AutoNate's path through it, and every tutorial is an episode.
+
+- Prologue: `docs/story/00-prologue.md` — how AutoNate got here.
+- Story bible: `docs/story/bible.md` — the Foundry, the League, and the terms this chronicle uses.
+- Roadmap: `docs/roadmap.md` — every episode, in order, mapped to the four tracks and the Explorer to Architect ladder.
+- Episode 1: `docs/tutorials/01-first-spawn-and-harvester.md` — Touchdown.
 

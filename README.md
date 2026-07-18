@@ -47,6 +47,14 @@ See `docs/local-screeps.md` for the current workflow notes.
 
 - `docs/world-orientation.md`
 
+## The Story
+
+Every tutorial is an episode in AutoNate's run through the Foundry.
+
+- `docs/story/00-prologue.md` — how AutoNate got here
+- `docs/story/bible.md` — characters, factions, and terms
+- `docs/roadmap.md` — the full season, episode by episode
+
 ## Tutorials
 
-- `docs/tutorials/01-first-spawn-and-harvester.md`
+- `docs/tutorials/01-first-spawn-and-harvester.md` — Episode 1: Touchdown
