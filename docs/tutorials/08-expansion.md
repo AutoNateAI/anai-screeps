@@ -70,6 +70,13 @@ Reserving a controller doesn't transfer ownership and doesn't cost GCL. It grant
 
 For this episode, reserve. Save claiming for when you're deliberately founding a second full colony.
 
+```mermaid
+flowchart TD
+    Decide{"Do you want to own this room, or just work in it?"}
+    Decide -- "Own it (found a colony)" --> Claim["claimController — costs a GCL slot, permanent"]
+    Decide -- "Just work in it (remote mining)" --> Reserve["reserveController — free, must be refreshed every tick a creep is present"]
+```
+
 ## Step 4: Add `role.reserver.js`
 
 ```js
@@ -207,6 +214,8 @@ Game.rooms[Memory.remoteRoom] && Game.rooms[Memory.remoteRoom].controller.reserv
 ```
 
 Expected result, once the reserver is in place: an object with a `username` matching yours and a `ticksToEnd` that resets upward each tick instead of counting down to zero.
+
+> 📸 **Screenshot placeholder:** The remote room's map view showing your reservation banner on its controller — the visual difference between "a room you glanced at" and "a room your creeps actually have rights to work in."
 
 ## Step 7: Confirm Energy Is Flowing Home
 

@@ -70,6 +70,16 @@ module.exports = roleDefender;
 
 Suggested body: `[TOUGH, TOUGH, ATTACK, ATTACK, RANGED_ATTACK, MOVE, MOVE, MOVE, MOVE]` (530 energy). Both ranged and melee checks run independently — not `else if` — because a creep with both parts can land both hits in the same tick once it closes to range 1.
 
+```mermaid
+flowchart TD
+    Tick([Defender tick]) --> Hostile{Hostile present?}
+    Hostile -- No --> Rampart[Hold rampart tile]
+    Hostile -- Yes --> Range{Range to hostile}
+    Range -->|"<= 3"| Ranged["rangedAttack (10 dmg)"]
+    Range -->|"<= 1"| Melee["attack (30 dmg)"]
+    Range -->|"> 1"| Close[moveTo hostile]
+```
+
 Make the population reactive instead of running a standing army against nothing:
 
 ```js

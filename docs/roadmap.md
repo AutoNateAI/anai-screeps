@@ -21,6 +21,34 @@ Start at `docs/story/00-prologue.md` if you haven't. Terms and character rules l
 | Lead Developer | First Blood | Scouting and PvP fundamentals | Track 1 + Track 3 |
 | Architect | The League | Repeatable local combat iteration, tournament operations, mentoring the next drop | Track 4 |
 
+```mermaid
+flowchart TD
+    subgraph Explorer["Explorer — First Light"]
+        E1["1. Touchdown"] --> E2["2. Two Sources, One Colony"]
+    end
+    subgraph Builder["Builder — Division of Labor"]
+        E3["3. Job Descriptions"] --> E4["4. The Controller's Price"] --> E5["5. Paved Roads"]
+    end
+    subgraph Developer["Developer — The Machine Wakes"]
+        E6["6. Haulers and Miners"] --> E7["7. Under Siege"] --> E8["8. Beyond the Border"]
+    end
+    subgraph Studio["Studio Member — Refactor"]
+        E9["9. The Weight of Memory"] --> E10["10. Two Minds"]
+    end
+    subgraph Lead["Lead Developer — First Blood"]
+        E11["11. Scouting the Dark"] --> E12["12. The First Skirmish"]
+    end
+    subgraph Architect["Architect — The League"]
+        E13["13. The Sparring Ground"] --> E14["14. Open the Gates"]
+    end
+
+    E2 --> E3
+    E5 --> E6
+    E8 --> E9
+    E10 --> E11
+    E12 --> E13
+```
+
 ## Arc I — Explorer: First Light
 
 | # | Episode | Logline | Tutorial | Status |

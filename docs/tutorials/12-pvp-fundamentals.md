@@ -76,6 +76,19 @@ module.exports = roleDefender;
 
 With no hostile present, the defender parks itself on a rampart tile and waits. That's deliberate — a defender standing in open terrain is just a creep waiting to be a bad trade.
 
+```mermaid
+flowchart TD
+    Tick([Defender tick]) --> Hostile{Hostile present?}
+    Hostile -- No --> Rampart[Hold rampart tile]
+    Hostile -- Yes --> Range{Range to hostile}
+    Range -->|"<= 3"| Ranged["rangedAttack (10 dmg)"]
+    Range -->|"<= 1"| Melee["attack (30 dmg)"]
+    Range -->|"> 1"| Close[moveTo hostile]
+    Ranged -.can also trigger.-> Melee
+```
+
+`Ranged` and `Melee` aren't mutually exclusive branches — both checks run independently, so a creep at range 1 with both parts fires both in the same tick.
+
 ## Step 4: Give It a Body and a Threat-Responsive Population
 
 ```js
@@ -145,6 +158,8 @@ Watch the client as the defender closes distance. It should fire `rangedAttack` 
 If you built ramparts with real hit points in Episode 7, try positioning a defender on one before the invader arrives (its default idle behavior already does this) and compare how the fight goes versus a defender caught in the open.
 
 Because the endpoint is just a `curl` call, nothing stops you from running it again once the first invader is dealt with — call it a second and third time and watch whether your defender population keeps pace, or whether two defenders start struggling against back-to-back waves. That repeatability is the whole point, and Episode 13 turns it into an actual practice loop.
+
+> 📸 **Screenshot placeholder:** A defender and an invader mid-fight, close enough to show both creeps' health bars dropping — the clearest single image of the numbers from Step 1 actually applying in real time.
 
 If TooAngel or another NPC bot is placed nearby (`docs/local-screeps.md`), it may eventually send creeps at your room on its own — that's not a scripted wave, it's a real opponent's actual decision. Treat any contact from it as a bonus data point, not something to force on a schedule.
 

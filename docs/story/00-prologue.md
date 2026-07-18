@@ -36,6 +36,8 @@ No quest marker. No tutorial arrow. Just a blank room and a console with a blink
 
 Your collaborator is still talking. "First thing every Foundry architect learns the same way: pick a room, place a spawn, get one worker moving. Everything after that is downstream of this one decision. Sound familiar? Congratulations, you're building an MVP. It just happens to be made of sticks."
 
+> 📸 **Screenshot placeholder:** A fresh, unclaimed room in the Screeps client — terrain, two sources, an unowned controller, nothing built yet. This is the exact "blank room and a blinking cursor" moment described above.
+
 This is where Episode 1 picks up.
 
 Continue to `docs/tutorials/01-first-spawn-and-harvester.md`, or see the full season at `docs/roadmap.md`.

@@ -41,6 +41,18 @@ Checkpoint:
 - Each wave logs a response in the terminal.
 - Between waves, watch the client: does the defender population recover to full strength before the next wave lands, or is it still catching up?
 
+```mermaid
+flowchart TD
+    Start(["sparring-loop.sh room waves delay"]) --> Fire["curl the wave endpoint"]
+    Fire --> Log[Log the response]
+    Log --> More{More waves left?}
+    More -- Yes --> Sleep["sleep delay seconds"]
+    Sleep --> Fire
+    More -- No --> Done(["Loop finished"])
+```
+
+> 📸 **Screenshot placeholder:** The terminal mid-loop, showing two or three wave responses already logged with a countdown to the next one — pairs well with a client screenshot of the colony taken at the same moment.
+
 ## Step 3: Find the Breaking Point
 
 Run the loop again with a shorter delay:

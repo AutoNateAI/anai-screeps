@@ -86,3 +86,7 @@ The full season is written — see `docs/roadmap.md` for loglines and arc groupi
 ## Journal
 
 - `docs/journal/TEMPLATE.md` — copy this for your own debugging-session entries (Episode 10)
+
+## Diagrams and Screenshots
+
+Every episode, the orientation doc, and the player guide now include Mermaid diagrams for the strategy/architecture concepts (renders natively on GitHub). Screenshot spots are marked inline with 📸 placeholders — see `docs/SCREENSHOTS-NEEDED.md` for the full checklist and where to drop real images in.

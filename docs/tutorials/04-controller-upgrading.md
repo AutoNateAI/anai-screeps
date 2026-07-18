@@ -52,6 +52,19 @@ Room Controller Level gates which structures you're allowed to have, not which s
 
 You just crossed row 2. Five extensions are now legal to build in this room. None exist yet.
 
+```mermaid
+flowchart LR
+    RCL1["RCL 1: Spawn only"] -->|upgrade| RCL2["RCL 2: + Extensions, Ramparts, Walls"]
+    RCL2 -->|upgrade| RCL3["RCL 3: + Towers"]
+    RCL3 -->|upgrade| RCL4["RCL 4: + Storage"]
+    RCL4 -->|upgrade| RCL5["RCL 5: + Links"]
+    RCL5 -->|upgrade| RCL6["RCL 6: + Terminal, Labs, Extractor"]
+    RCL6 -->|upgrade| RCL7["RCL 7: + 2nd Spawn, Factory"]
+    RCL7 -->|upgrade| RCL8["RCL 8: + 3rd Spawn, Observer, Power Spawn, Nuker"]
+```
+
+Each arrow is "allowed to build," not "built automatically" — crossing RCL2 doesn't place a single extension for you. That's still Step 3.
+
 Checkpoint:
 
 ```js
@@ -196,6 +209,8 @@ Game.spawns.Spawn1.room.energyCapacityAvailable
 Expected result: `350` — `300` from the spawn plus `50` from one completed extension. Each additional finished extension adds another `50`, up to `550` once all five are standing.
 
 This number is not cosmetic. `spawnCreep` can only afford body parts up to whatever `energyCapacityAvailable` allows. A colony stuck at `300` capacity is permanently stuck with 3-part creeps like the ones you've been spawning all along.
+
+> 📸 **Screenshot placeholder:** Five completed extensions surrounding `Spawn1` in the client, with the room's energy capacity UI visible — the moment "more capacity" stops being a console number and becomes visible structures.
 
 ## Troubleshooting
 

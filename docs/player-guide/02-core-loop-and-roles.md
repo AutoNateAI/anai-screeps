@@ -124,6 +124,19 @@ module.exports = roleBuilder;
 
 Exclude `STRUCTURE_WALL` from repair targets on purpose — walls have hit-point maximums in the hundreds of millions, and a builder that tries to top one off will never do anything else again.
 
+```mermaid
+flowchart TD
+    Main["main.js: loop()"] --> Clean[Clean up dead creep memory]
+    Clean --> Spawn[spawnMissingRoles]
+    Spawn --> Dispatch{"creep.memory.role?"}
+    Dispatch -- harvester --> RH[role.harvester.js]
+    Dispatch -- upgrader --> RU[role.upgrader.js]
+    Dispatch -- builder --> RB[role.builder.js]
+    Dispatch -- "any future role" --> RN[role.*.js]
+```
+
+`main.js` never contains behavior itself, only dispatch. Adding a role later means a new file, one line in `ROLE_BODIES`/`POPULATION`, one `else if`.
+
 ## Population-Based Spawning
 
 Stop hardcoding creep names. Spawn by role count, with a body suited to each job:

@@ -42,6 +42,8 @@ if (Game.time % 20 === 0) {
 
 Checkpoint: a log line appears roughly every 20 ticks with real, nonzero CPU usage.
 
+> 📸 **Screenshot placeholder:** The console log panel showing a run of CPU/bucket log lines over time — useful as a reference for what a healthy, non-climbing CPU trend actually looks like versus one that's creeping up.
+
 ## Step 2: Find the Waste
 
 Look at `role.upgrader.js` and `role.builder.js`. Both call `creep.room.find(FIND_SOURCES)` every single tick a creep needs to harvest — even though the sources in a room never move and never change. That's a recomputation of something that was already true a hundred ticks ago.
@@ -57,6 +59,15 @@ The obvious fix looks like caching into `Memory` — but `Memory` is a JSON-seri
 What you want instead is a plain JavaScript object declared outside the `loop` function. Screeps keeps your script's module scope alive between ticks in the same runtime instance — a variable declared at the top of a file persists, unserialized, until a *global reset* (a code push, an uncaught exception, or a periodic engine refresh) wipes it. When that happens, the object is simply empty again, and your code recomputes it once. No crash, no special handling required — that's the property that makes this safe to rely on.
 
 The rule going forward: if data must survive a global reset, it belongs in `Memory` (like `creep.memory.sourceId` — you need that even if the reset happens mid-life). If it's cheap to recompute and doesn't need that guarantee, keep it in a plain cache object instead.
+
+```mermaid
+flowchart TD
+    Data{New data to store} --> Survive{Must it survive a global reset?}
+    Survive -- Yes --> Mem["Memory — serialized every tick, costs CPU, persists"]
+    Survive -- No --> Cache["Plain object at module scope — free between ticks, wiped on reset, cheap to recompute"]
+```
+
+`Memory.creeps[name].sourceId` is a `Yes`. A cached list of a room's sources is a `No` — losing it on a reset just costs one recomputation, not a broken colony.
 
 ## Step 4: Build `cache.js`
 

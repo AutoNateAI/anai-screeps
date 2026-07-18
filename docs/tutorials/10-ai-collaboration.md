@@ -42,6 +42,18 @@ against:
 
 The second one is longer to write and faster to get right. That trade is almost always worth it.
 
+```mermaid
+flowchart LR
+    A["What you expected"] --> E["Send prompt"]
+    B["What actually happened"] --> E
+    C["The relevant code"] --> E
+    D["What you already tried"] --> E
+    F["What 'done' looks like"] --> E
+    E --> G["Fast, correct answer"]
+```
+
+Skip any one of the five and the answer usually still arrives — it's just more likely to be a plausible guess instead of a correct diagnosis.
+
 ## Step 2: Break Something on Purpose
 
 Open `role.hauler.js`. Find this line:

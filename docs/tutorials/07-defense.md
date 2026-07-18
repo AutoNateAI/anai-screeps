@@ -109,6 +109,18 @@ module.exports.loop = function () {
 
 The tower defaults to repairing your own damaged structures when nothing hostile is around, so its energy doesn't sit idle between attacks.
 
+```mermaid
+flowchart TD
+    Tick([runTowers per tick]) --> ForEach{For each owned tower}
+    ForEach --> Hostile{Hostile creep in range?}
+    Hostile -- Yes --> Attack[tower.attack closest hostile]
+    Hostile -- No --> Damaged{Any damaged owned structure?}
+    Damaged -- Yes --> Repair[tower.repair it]
+    Damaged -- No --> Idle([Do nothing this tick])
+```
+
+Same shape as every role in this season: check state, act, or wait — a tower just doesn't move.
+
 ## Step 4: Keep the Tower Fueled
 
 A tower with no energy can't attack. Give haulers a reason to prioritize it. Update `role.hauler.js`'s delivery target selection:
@@ -233,6 +245,8 @@ Checkpoint:
 - An invader creep appears at one of your room's exits within a few ticks of the call.
 - Within a tick or two of it coming into tower range, `runTowers()` calls `tower.attack()` on it — watch the tower's targeting beam in the client.
 - The tower's `store[RESOURCE_ENERGY]` visibly drops as it fires.
+
+> 📸 **Screenshot placeholder:** A tower's attack beam connecting with a test invader in the client — the single most satisfying image this episode produces, and worth capturing the first time it happens.
 
 ```js
 Game.spawns.Spawn1.room.find(FIND_HOSTILE_CREEPS)

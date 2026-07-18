@@ -84,6 +84,8 @@ Checkpoint:
 - The room now has a spawn named `Spawn1`.
 - The top-right user menu shows you are connected as `autonate`.
 
+> 📸 **Screenshot placeholder:** `Spawn1` freshly placed in the client, before any creep exists — this is the visual "checkpoint" a new reader can compare their own room against.
+
 ## Step 3: Create One Harvester Manually
 
 Open the in-game console and run:
@@ -148,6 +150,27 @@ Checkpoint:
 - It harvests until full.
 - It returns to `Spawn1`.
 - It transfers energy into the spawn.
+
+This is the decision your script re-runs every single tick — the entire loop, drawn out:
+
+```mermaid
+flowchart TD
+    Start([Tick runs]) --> HasCreep{Does Harvester1 exist?}
+    HasCreep -- No --> End([Do nothing this tick])
+    HasCreep -- Yes --> HasRoom{Free capacity > 0?}
+    HasRoom -- Yes --> Harvest[harvest source]
+    Harvest --> InRange1{In range?}
+    InRange1 -- No --> Move1[moveTo source]
+    InRange1 -- Yes --> End
+    Move1 --> End
+    HasRoom -- No --> Transfer[transfer energy to Spawn1]
+    Transfer --> InRange2{In range?}
+    InRange2 -- No --> Move2[moveTo Spawn1]
+    InRange2 -- Yes --> End
+    Move2 --> End
+```
+
+Every role in every later episode is a variation on this exact shape: check state, act or move closer, repeat next tick.
 
 ## Step 5: Observe the Loop
 

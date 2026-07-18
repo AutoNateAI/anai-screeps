@@ -85,6 +85,17 @@ module.exports = roleScout;
 
 The scout cycles through `Memory.scoutTargets` in order, recording a snapshot of each room the moment it arrives, then moving on to the next one. It never stops — a scout is meant to keep re-checking rooms, not just visit them once.
 
+```mermaid
+flowchart LR
+    Idle([Scout at target room]) --> Record[recordIntel: write Memory.rooms snapshot]
+    Record --> Next[Advance targetIndex]
+    Next --> Travel[moveTo next room in Memory.scoutTargets]
+    Travel --> Idle
+    Record -.data used later by.-> Decision["Your expansion decision — read anytime, no creep required"]
+```
+
+The loop and the decision are decoupled on purpose — the scout keeps circling regardless of whether you're actively reading `Memory.rooms` that tick.
+
 ## Step 3: Wire It In
 
 ```js
@@ -126,6 +137,8 @@ Memory.rooms['<bot-room-name>'].owner
 ```
 
 Expected result: the bot's username (`tooangel` or `simplebot`), not empty. This is the difference between scouting theory and scouting practice — every other room in this episode is empty until proven otherwise; a bot's room is actually owned by something that's actively playing, the same way a real opponent's room would be.
+
+> 📸 **Screenshot placeholder:** The map view zoomed out enough to show both your colony and the bot's claimed room, with the bot's owned tiles visibly color-coded differently — the moment "there's something else out here" stops being theoretical.
 
 ## Step 5: Use Intel to Pick an Expansion Target
 

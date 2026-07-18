@@ -64,6 +64,8 @@ module.exports = roleMiner;
 
 This creep has no `CARRY` parts. When it harvests, the energy has nowhere to go in its own inventory — it drops at the creep's feet. If that tile has a container on it (the ones you built in Episode 5), the energy goes into the container automatically instead of piling on the ground. That's why the container's position mattered: it has to be a tile within harvesting range of the source.
 
+> 📸 **Screenshot placeholder:** A miner standing motionless on a container tile next to a source, with the container's energy count visibly climbing — the visual proof that "never moves again" actually works.
+
 ## Step 3: Create `role.hauler.js`
 
 ```js
@@ -104,6 +106,18 @@ module.exports = roleHauler;
 ```
 
 The hauler never harvests. It withdraws from containers and delivers to whatever still has open capacity — extensions first in practice, since `findClosestByPath` picks nearest, but it'll fall back to the spawn once extensions are full.
+
+The full logistics chain, once both roles are running:
+
+```mermaid
+flowchart LR
+    Source(("Source")) -->|harvest, never moves| Miner[Miner]
+    Miner -->|energy drops into| Container[Container]
+    Container -->|withdraw| Hauler[Hauler]
+    Hauler -->|transfer| Extension["Extension / Spawn"]
+```
+
+Compare that to the general-purpose harvester from Episode 2: one creep doing all four of these steps itself, walking back and forth the entire time. This is the same total work, split so that harvesting never stops to let a creep walk anywhere.
 
 ## Step 4: Give Every Role Its Own Body
 

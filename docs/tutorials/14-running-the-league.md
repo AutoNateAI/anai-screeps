@@ -79,6 +79,17 @@ Round 2: winner(A/B) vs winner(C/D)
 
 Seed order matters for fairness at scale, but for your first internal run, a simple shuffle is fine — document how you seeded it (`league/results/` is where that documentation lives) so the process is repeatable and inspectable later, not just remembered.
 
+```mermaid
+flowchart LR
+    A(["A"]) --> R1{"Round 1"}
+    B(["B"]) --> R1
+    C(["C"]) --> R2{"Round 1"}
+    D(["D"]) --> R2
+    R1 --> F{"Round 2 — Final"}
+    R2 --> F
+    F --> W(["Winner"])
+```
+
 ## Step 6: Run and Record a Match
 
 Deploy the locked submission's code to its own colony on this server, then run the exact same benchmark against it:
@@ -98,6 +109,21 @@ Use identical arguments for every contestant in a given round — that consisten
 Fill out the result template from `league/scoring-rubric.md` and save it as `league/results/<match-id>.md`. Use the Match Result table for the win/loss score; use the Judged Categories table only if this is a showcase or cohort format where code quality is part of what's being taught, not just who won.
 
 Checkpoint: `league/results/` has at least one completed, filled-out match file, referencing a real tagged commit hash for each contestant.
+
+The full pipeline, start to finish:
+
+```mermaid
+flowchart TD
+    Submit["Submission + SUBMISSION.md"] --> Lock["git tag at deadline"]
+    Lock --> Cheat{"Passes anti-cheat checklist?"}
+    Cheat -- No --> DQ(["Disqualified — recorded, not patched"])
+    Cheat -- Yes --> Bracket["Placed in bracket"]
+    Bracket --> Benchmark["sparring-loop.sh run, identical params"]
+    Benchmark --> Score["Scored via league/scoring-rubric.md"]
+    Score --> Publish["Result published to league/results/"]
+```
+
+> 📸 **Screenshot placeholder:** A contestant's colony mid-benchmark, tower firing on the current wave, with the terminal's wave log visible in the same frame — the "match in progress" shot for a league recap.
 
 ## Troubleshooting
 

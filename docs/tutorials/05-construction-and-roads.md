@@ -93,6 +93,16 @@ Game.spawns.Spawn1.room.find(FIND_CONSTRUCTION_SITES, { filter: { structureType:
 
 Expected result: `2` (one per source, assuming a two-source room).
 
+Once both are placed, the room's economy layout looks like this:
+
+```mermaid
+flowchart LR
+    Spawn(("Spawn1")) ---|road| Source1(("Source A"))
+    Spawn ---|road| Source2(("Source B"))
+    Source1 --- Container1["Container"]
+    Source2 --- Container2["Container"]
+```
+
 These containers won't be used by any role yet. That's expected — they're infrastructure ahead of the need. Episode 6 is what makes them matter.
 
 ## Step 4: Let the Colony Build Itself
@@ -108,6 +118,8 @@ Checkpoint (over the following minutes of ticks):
 ```js
 Game.spawns.Spawn1.room.find(FIND_CONSTRUCTION_SITES).length
 ```
+
+> 📸 **Screenshot placeholder:** A partially-paved road between `Spawn1` and a source, visibly mid-construction, with a container standing at the source end — the clearest single image of "infrastructure ahead of need" this episode produces.
 
 ## Step 5: Measure the Payoff
 

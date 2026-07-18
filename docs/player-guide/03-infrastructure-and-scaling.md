@@ -80,6 +80,16 @@ module.exports = roleHauler;
 
 Body suggestions: miner `[WORK, WORK, WORK, WORK, WORK, MOVE]` (550 energy), hauler `[CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE]` (400 energy).
 
+```mermaid
+flowchart LR
+    Source(("Source")) -->|harvest, never moves| Miner[Miner]
+    Miner -->|drops into| Container[Container]
+    Container -->|withdraw| Hauler[Hauler]
+    Hauler -->|transfer| Extension["Extension / Spawn"]
+```
+
+Compare to one general-purpose creep doing all four steps itself, walking the whole time — same total work, split so harvesting never stops to let a creep walk anywhere.
+
 ## CPU and Memory Discipline
 
 `room.find()` scans every object of that type; `findClosestByPath` runs real pathfinding. Both are cheap at three creeps and expensive at fifteen.
@@ -108,6 +118,13 @@ module.exports = { getSources };
 ```
 
 A plain object like this resets itself harmlessly on a global reset (a code push, an uncaught exception, a periodic engine refresh) — the next call just recomputes it once. Anything that *must* survive a reset (like `creep.memory.sourceId`) belongs in `Memory` instead.
+
+```mermaid
+flowchart TD
+    Data{New data to store} --> Survive{Must survive a global reset?}
+    Survive -- Yes --> Mem["Memory — serialized every tick, costs CPU, persists"]
+    Survive -- No --> Cache["Plain object at module scope — free between ticks, wiped on reset"]
+```
 
 ## Multi-Room Basics
 

@@ -53,6 +53,8 @@ Checkpoint:
 
 This is the bug made visible on purpose. Watch it happen once before fixing it.
 
+> 📸 **Screenshot placeholder:** Both harvesters stacked on the same source tile, one visibly waiting its turn — the exact "two founders, one laptop" moment this step is designed to produce.
+
 ## Step 3: Assign Sources Instead of Guessing
 
 Replace `main` with a version that gives each creep a `sourceId` in Memory the first time it needs one, and reuses that assignment on every later tick:
@@ -119,6 +121,20 @@ function getAssignedSource(creep) {
 
   return Game.getObjectById(creep.memory.sourceId);
 }
+```
+
+`getAssignedSource` in one picture — this only runs the expensive part once per creep, ever, not every tick:
+
+```mermaid
+flowchart TD
+    Call([getAssignedSource called]) --> HasId{"creep.memory.sourceId set?"}
+    HasId -- Yes --> Lookup[Game.getObjectById it]
+    HasId -- No --> FindAll[Find all sources in room]
+    FindAll --> Count[Count existing claims per source]
+    Count --> Sort[Sort sources: fewest claims first]
+    Sort --> Assign[Store sources[0].id in memory]
+    Assign --> Lookup
+    Lookup --> Return([Return the source object])
 ```
 
 Save the script.

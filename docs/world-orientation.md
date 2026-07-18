@@ -55,7 +55,43 @@ If the company has no workers, nothing moves. If the workers have unclear jobs, 
 
 The game teaches systems thinking because everything is connected. You will feel this in your chest the first time an idle spawn costs you real progress and you realize it was entirely your fault.
 
+```mermaid
+flowchart LR
+    A1[Budget] --- B1[Energy]
+    A2[Workers] --- B2[Creeps]
+    A3[Job Descriptions] --- B3[Roles]
+    A4[Shared Notebook] --- B4[Memory]
+    A5[License to Build Bigger] --- B5[Controller]
+    A6[Infrastructure] --- B6["Roads / Extensions / Towers / Storage"]
+    A7[Operational Risk] --- B7["Hostiles & Decay"]
+    A8[Management System] --- B8[Your Codebase]
+
+    subgraph Startup["Small Software Company"]
+        A1
+        A2
+        A3
+        A4
+        A5
+        A6
+        A7
+        A8
+    end
+
+    subgraph Colony["Screeps Colony"]
+        B1
+        B2
+        B3
+        B4
+        B5
+        B6
+        B7
+        B8
+    end
+```
+
 ## Screeps Components at a Glance
+
+> 📸 **Screenshot placeholder:** A labeled or annotated view of a real room in the Screeps client — spawn, sources, controller, and terrain all visible at once — so this table has something concrete to point at instead of asking the reader to picture it.
 
 | Component | What It Is | Why It Matters | First Strategy Question |
 | --- | --- | --- | --- |
@@ -129,6 +165,26 @@ Then:
 ```text
 source -> creep -> construction sites -> infrastructure
 ```
+
+```mermaid
+flowchart LR
+    Source((Source)) --> Creep1[Creep]
+    Creep1 --> Spawn[Spawn]
+    Spawn --> MoreCreeps[More Creeps]
+    MoreCreeps -.loops back to.-> Source
+
+    Source --> Creep2[Creep]
+    Creep2 --> Controller[Controller]
+    Controller --> RCL[Higher Room Level]
+
+    Source --> Creep3[Creep]
+    Creep3 --> Sites[Construction Sites]
+    Sites --> Infra[Infrastructure]
+
+    RCL -.unlocks.-> Sites
+```
+
+Each stage doesn't replace the one before it — by the time you're building infrastructure, the spawn loop and the controller loop are both still running underneath it. This is what "the colony survives without you watching every tick" actually looks like once it's real.
 
 The early strategy is not about cleverness. It is about keeping the colony alive long enough to learn.
 

@@ -161,6 +161,20 @@ Save all three files.
 
 `_` is [lodash](https://lodash.com/), available globally in the Screeps runtime — you don't need to `require` it.
 
+This is the architecture every future episode builds on — `main.js` never contains behavior itself, only dispatch:
+
+```mermaid
+flowchart TD
+    Main["main.js: loop()"] --> Clean[Clean up dead creep memory]
+    Clean --> Spawn[spawnMissingRoles]
+    Spawn --> Dispatch{"For each creep: what's memory.role?"}
+    Dispatch -- harvester --> RH["role.harvester.js: run(creep)"]
+    Dispatch -- upgrader --> RU["role.upgrader.js: run(creep)"]
+    Dispatch -- "future roles" --> RN["role.*.js: run(creep)"]
+```
+
+Adding a role later means: write a new `role.*.js` file, add one line to `ROLE_BODIES`/`POPULATION`, add one `else if` branch. `main.js` itself barely changes across the rest of this season.
+
 Checkpoint:
 
 - Existing creeps (`Harvester1`, `Harvester2`) stop moving. They have no `memory.role`, so neither `if` branch matches them.
@@ -197,6 +211,8 @@ Game.spawns.Spawn1.room.controller.progressTotal
 ```
 
 `progress` should increase over time. It won't reach `progressTotal` in this episode — that's Episode 4.
+
+> 📸 **Screenshot placeholder:** The room controller's progress bar in the client, visibly filling — the first moment upgrading stops being an abstract number and becomes something you can watch move.
 
 ## Troubleshooting
 
