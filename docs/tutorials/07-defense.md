@@ -216,13 +216,21 @@ These values should be climbing, not flat.
 
 ## Step 7: Trigger a Test Invasion
 
-Waiting for a real, energy-triggered invader to show up is impractical for a tutorial — the automatic trigger fires only after roughly 100,000 energy has been mined in a room, which is a real-time wait measured in hours, not a testing loop. The Screeps client ships with exactly this problem solved: a manual invasion tester built for private servers.
+Waiting for a real, energy-triggered invader to show up is impractical for a tutorial — the automatic trigger fires only after roughly 100,000 energy has been mined in a room, which is a real-time wait measured in hours, not a testing loop. This repo's local server has a faster, fully offline way to force the issue.
 
-In the room's side panel (Steam client or the browser client at `http://localhost:21025`), find the **Invasion** tab. Click **Create an invader**, then click an exit tile in your room — the client highlights the tile differently once you're hovering a valid exit. A real invader creep spawns there and starts pathing toward your structures, exactly as it would from the automatic trigger.
+`screeps-server/mods/sparring-ground.js` adds a local HTTP endpoint that asks the server's own invasion system to act immediately. From a terminal on the machine running the server:
+
+```sh
+curl -X POST http://localhost:21025/local/api/sparring/wave \
+  -H 'Content-Type: application/json' \
+  -d '{"room": "<your-room-name>"}'
+```
+
+This doesn't fabricate a creep — it nudges the room's real `invaderGoal`/`invaderHarvested` counters past the threshold and runs the engine's own invasion cronjob, the same mechanism that would eventually fire on its own. See `docs/local-screeps.md` for exactly what it's doing under the hood and its one real limitation (it needs at least one neutral, unclaimed exit to spawn into).
 
 Checkpoint:
 
-- An invader creep appears at the exit tile you clicked.
+- An invader creep appears at one of your room's exits within a few ticks of the call.
 - Within a tick or two of it coming into tower range, `runTowers()` calls `tower.attack()` on it — watch the tower's targeting beam in the client.
 - The tower's `store[RESOURCE_ENERGY]` visibly drops as it fires.
 
@@ -232,19 +240,7 @@ Game.spawns.Spawn1.room.find(FIND_HOSTILE_CREEPS)
 
 Expected result, while the invader is alive: an array with one creep in it, not empty.
 
-If you want a scriptable alternative to the UI panel — useful for repeatable testing — the private server's CLI can insert a hostile creep directly. From a terminal on the machine running the server:
-
-```sh
-docker exec -it autonate-screeps screeps-launcher cli
-```
-
-Then, on a single line inside the CLI:
-
-```js
-storage.db['rooms.objects'].insert({ room: '<your-room-name>', x: 0, y: 25, type: 'creep', user: '2', name: 'invader_test', body: [{ type: 'attack', hits: 100 }, { type: 'move', hits: 100 }], hits: 200, hitsMax: 200, ticksToLive: 1500 })
-```
-
-Adjust `x`/`y` to a real exit tile in your room and `body` to whatever mix you want to test against. This is more fragile than the Invasion panel — it depends on the exact private-server database schema — so prefer the UI method unless you specifically need scripted, repeatable spawns.
+If the endpoint doesn't produce an invader — a future engine update changed something the mod depends on, for instance — the guaranteed fallback is the client's own **Invasion** tab in the room side panel: click **Create an invader**, then click an exit tile (it highlights differently once you're hovering a valid one). That's a first-party client feature, not something this repo has to maintain.
 
 ## Troubleshooting
 
@@ -254,7 +250,9 @@ If the tower never fires in a room where you can confirm a hostile is present, c
 
 If ramparts block your own creeps' movement, they shouldn't — ramparts only block creeps belonging to other players by default. If your own creeps can't pass, check whether the rampart's `public` flag or ownership is set correctly.
 
-If the Invasion tab doesn't appear in the room panel, confirm you're looking at a room you own — the tester is scoped to your own claimed rooms, not neutral ones.
+If `curl http://localhost:21025/local/api/sparring/health` doesn't return `{"ok":1,...}`, the mod didn't load — confirm `screeps-server/mods/sparring-ground.js` exists and restart the container (`docker restart autonate-screeps`).
+
+If the wave endpoint returns `ok: 1` but no invader appears, the room's exits may all lead to claimed or reserved rooms — check with `Game.map.describeExits(room)` and the intel from Episode 11 if you have it yet, or fall back to the Invasion panel.
 
 ## Completion Criteria
 
@@ -264,7 +262,7 @@ You are done when:
 - `runTowers()` is running every tick as part of `main`.
 - The hauler prioritizes a low-energy tower over extensions.
 - At least one rampart is placed and its hit points are increasing under the builder's repair logic.
-- You've triggered a test invasion through the Invasion panel and watched the tower actually fire on it.
+- You've triggered a test invasion through the sparring-ground endpoint (or the Invasion panel) and watched the tower actually fire on it.
 
 ## Learning Notes
 

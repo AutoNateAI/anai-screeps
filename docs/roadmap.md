@@ -19,7 +19,7 @@ Start at `docs/story/00-prologue.md` if you haven't. Terms and character rules l
 | Developer | The Machine Wakes | RCL 4-6, logistics split, defense, second room | Track 2 |
 | Studio Member | Refactor | Ongoing, CPU/Memory discipline, formal AI workflow | Track 2 + Track 3 |
 | Lead Developer | First Blood | Scouting and PvP fundamentals | Track 1 + Track 3 |
-| Architect | The League | Arena, tournament operations, mentoring the next drop | Track 4 |
+| Architect | The League | Repeatable local combat iteration, tournament operations, mentoring the next drop | Track 4 |
 
 ## Arc I — Explorer: First Light
 
@@ -62,7 +62,7 @@ Start at `docs/story/00-prologue.md` if you haven't. Terms and character rules l
 
 | # | Episode | Logline | Tutorial | Status |
 | --- | --- | --- | --- | --- |
-| 13 | The Arena | Screeps Arena as a fast-iteration lab for combat and pathing logic, then port the lessons back into the World bot. | `docs/tutorials/13-arena.md` | Live |
+| 13 | The Sparring Ground | Turn one Invasion-panel test into a repeatable wave-based training loop on this repo's own local server — no internet, no Steam, no Arena required. | `docs/tutorials/13-sparring-ground.md` | Live |
 | 14 | Open the Gates | AutoNate stops playing solo and starts running the league: submissions, scoring, replays, and the next architect's drop pod. | `docs/tutorials/14-running-the-league.md` | Live |
 
 ## Notes for Future Episodes

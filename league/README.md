@@ -17,7 +17,7 @@ league/
 
 Each contestant gets a folder under `submissions/<callsign>/` containing:
 
-- Their bot's source files (matching whatever format the match environment expects — Arena script or World branch export).
+- Their bot's source files as a World branch export (`main.js` plus every `role.*.js` file), ready to deploy to its own colony for the sparring benchmark described in Episode 14.
 - A `SUBMISSION.md` with: contestant name/callsign, submission git commit hash, submission timestamp, and a one-line description of the bot's strategy.
 
 Submissions are locked at the deadline by tagging the commit — see Episode 14, Step 2. No changes to a submission folder after its tag is cut.

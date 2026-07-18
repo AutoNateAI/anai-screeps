@@ -180,10 +180,35 @@ http://localhost:21025/authmod/password/
 
 For this local-only setup, the direct registration API is the cleaner first-account path.
 
+## Sparring Ground Mod
+
+`screeps-server/mods/sparring-ground.js` is a custom local mod (same pattern as `local-onboarding.js` and `screeps-launcher-cli.js` in the same folder — the launcher auto-loads every file under `mods/`, no `config.yml` entry needed). It adds one HTTP endpoint so combat tutorials can trigger a real NPC invasion repeatedly, entirely offline, without clicking through the client's Invasion panel each time:
+
+```sh
+curl -X POST http://localhost:21025/local/api/sparring/wave \
+  -H 'Content-Type: application/json' \
+  -d '{"room": "W6N3"}'
+```
+
+Swap in your actual room name. This forces the target room's invasion counters to look already-due, then runs the engine's own `genInvaders` cronjob — the same mechanism a server admin would trigger by hand from the CLI (`docker exec -it autonate-screeps screeps-launcher cli`, then `storage.db.rooms.update(...)` and `system.runCronjob('genInvaders')`). It doesn't fabricate a creep document; it asks the real engine to spawn one, so the result should be a normal, correctly-formed invader.
+
+Two things worth knowing before relying on this in a tutorial session:
+
+- It only produces an invader if the target room still has at least one exit into a neutral, unclaimed room — same restriction the automatic energy-triggered invasion has. If every neighboring room is claimed or reserved (see Episode 8), pick a different exit or test against an earlier checkpoint.
+- This composes documented private-server CLI commands rather than a first-party API, so if a future engine update changes how `invaderGoal`/`genInvaders` behave, this could stop working. The guaranteed fallback is always the client's own Invasion panel: room side panel > Invasion tab > Create an invader > click an exit tile.
+
+Health check:
+
+```sh
+curl http://localhost:21025/local/api/sparring/health
+```
+
+Expected result: `{"ok":1,"message":"sparring-ground mod is loaded"}`.
+
 ## Notes
 
 - `.env` stays local because it contains Airtable credentials.
-- Runtime files generated under `screeps-server/` are ignored except for `config.yml`.
+- Runtime files generated under `screeps-server/` are ignored except for `config.yml` and everything under `screeps-server/mods/`.
 - The saved planning conversation is in `input_convos/chatgpt/convo_000.md`.
 
 ## Dashboard Counters

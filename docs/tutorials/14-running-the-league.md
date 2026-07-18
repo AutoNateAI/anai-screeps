@@ -21,7 +21,7 @@ Run one complete tournament cycle end to end, exercising every part of the opera
 
 Tutorial 13 is complete:
 
-- You understand the difference between an Arena match and a World colony well enough to pick between them for a tournament format.
+- `scripts/sparring-loop.sh` and the sparring-ground mod are working — you've run at least one multi-wave test against your own colony.
 - `league/README.md` and `league/scoring-rubric.md` exist in this repo — read both before continuing.
 
 ## Step 1: Open Submissions
@@ -52,10 +52,10 @@ No changes to that folder count after the tag is cut. This isn't bureaucracy —
 
 Two real options, from what this season already built:
 
-- **Arena** (Episode 13): fixed maps, clean win conditions, built-in replay and spectating. Best for a clean bracket where every match needs a definitive result in a bounded number of ticks.
-- **World** (everything else this season): persistent colonies, open-ended matches. Better for a longer-running "colony vs. colony" season format, but messier for a tournament — there's no built-in "match over" signal, and running two contestants' full colonies on one private server takes real setup.
+- **Sparring benchmark** (Episode 13): every contestant's bot runs on its own colony, on its own schedule, and gets scored by how it holds up against the same standardized `scripts/sparring-loop.sh` wave sequence — same room-setup expectations, same wave count, same delay. This sidesteps the hardest part of a private-server tournament entirely: two contestants never need to be online or claimed into the same room at the same time. It's fully offline, and every result is reproducible by rerunning the identical wave sequence.
+- **World colony vs. colony**: two contestants' bots actually coexist and fight in the same room or set of rooms. More faithful to real PvP, but genuinely harder to operate — there's no built-in "match over" signal, and getting two different codebases running as two different local accounts in the same private server takes real setup this season didn't build out.
 
-For a first tournament, use Arena. It's the format this repo can actually exercise cleanly without inventing new private-server infrastructure this season never built.
+For a first tournament, use the sparring benchmark. It's the format this repo can already run end to end, asynchronously, with nothing beyond what Episodes 7, 12, and 13 already shipped.
 
 ## Step 4: Run Every Submission Through the Anti-Cheat Checklist
 
@@ -81,11 +81,17 @@ Seed order matters for fairness at scale, but for your first internal run, a sim
 
 ## Step 6: Run and Record a Match
 
-Play the Arena match between two locked submissions. While it runs, capture:
+Deploy the locked submission's code to its own colony on this server, then run the exact same benchmark against it:
 
-- Both contestants' callsigns and commit hashes.
-- The final result.
-- A link to or saved copy of the replay, if the Arena client supports exporting one for the current season.
+```sh
+./scripts/sparring-loop.sh <contestant-room-name> 5 10
+```
+
+Use identical arguments for every contestant in a given round — that consistency is what makes the results comparable at all. While it runs, capture:
+
+- The contestant's callsign and commit hash.
+- How many waves the colony's defense held before failing (or that it held all of them).
+- What specifically failed first, if it did — same observation you practiced making in Episode 13.
 
 ## Step 7: Score and Publish
 
@@ -95,7 +101,7 @@ Checkpoint: `league/results/` has at least one completed, filled-out match file,
 
 ## Troubleshooting
 
-If you can't tell who actually won an Arena match, that's a sign the scenario's win condition wasn't clearly defined before contestants submitted — fix the rules before the next round, not the scoring after the fact.
+If you can't tell whether a contestant "won," that's a sign the benchmark's success condition wasn't clearly defined before submissions opened — decide up front whether waves-survived, time-to-failure, or a judged rubric score is the actual metric, and publish that rule before the next round runs.
 
 If a submission's commit hash doesn't match what's in its folder, don't guess which version is "the real one." Disqualify and ask the contestant to resubmit through the proper channel before the next deadline.
 

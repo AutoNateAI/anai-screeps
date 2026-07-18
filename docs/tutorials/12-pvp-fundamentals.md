@@ -122,7 +122,13 @@ Add the matching `else if` branch to the dispatch loop for `defender`, same as e
 
 ## Step 5: Trigger a Test Invasion
 
-Use the same Invasion panel from Episode 7, Step 7: open your room's side panel in the client, go to the **Invasion** tab, click **Create an invader**, then click an exit tile in your room.
+Use the sparring-ground endpoint from Episode 7, Step 7:
+
+```sh
+curl -X POST http://localhost:21025/local/api/sparring/wave \
+  -H 'Content-Type: application/json' \
+  -d '{"room": "<your-room-name>"}'
+```
 
 This time watch `role.defender.js` instead of the tower. The population override from Step 4 should notice `FIND_HOSTILE_CREEPS` returning something and start producing defenders on the next spawn cycle — if you don't already have two on hand, there will be a gap between the invader arriving and your first defender reaching it. That gap is real and worth observing, not a bug to fix in this episode.
 
@@ -138,6 +144,8 @@ Watch the client as the defender closes distance. It should fire `rangedAttack` 
 
 If you built ramparts with real hit points in Episode 7, try positioning a defender on one before the invader arrives (its default idle behavior already does this) and compare how the fight goes versus a defender caught in the open.
 
+Because the endpoint is just a `curl` call, nothing stops you from running it again once the first invader is dealt with — call it a second and third time and watch whether your defender population keeps pace, or whether two defenders start struggling against back-to-back waves. That repeatability is the whole point, and Episode 13 turns it into an actual practice loop.
+
 ## Troubleshooting
 
 If the defender never attacks despite a hostile being present, check `creep.getActiveBodyparts(ATTACK)` and `creep.getActiveBodyparts(RANGED_ATTACK)` directly — a body part reduced to 0 hp by damage stops counting as "active" even though it's still listed in `creep.body`.
@@ -146,7 +154,7 @@ If `spawnMissingRoles` never produces a defender during a threat, confirm `getPo
 
 If the defender walks into the open instead of holding a rampart tile, confirm at least one rampart exists and has been assigned real hit points by the builder (Episode 7, Step 6) — `find(FIND_MY_STRUCTURES, ...)` will still return a rampart with 1 hit point, and standing on it won't help much.
 
-If the Invasion tab isn't visible, see Episode 7's troubleshooting — it's scoped to rooms you own.
+If the wave endpoint doesn't produce an invader, see Episode 7's troubleshooting — the client's Invasion panel is the guaranteed fallback.
 
 ## Completion Criteria
 
@@ -167,10 +175,10 @@ After completing the tutorial, write down:
 - Boosts (a lab structure, unlocked at RCL6) can amplify these numbers significantly. Why does this episode not cover them?
 - If a hostile appeared in `Memory.remoteRoom` instead of your home room, would anything in this episode's code respond? Should it?
 
-## Next: Episode 13 — The Arena
+## Next: Episode 13 — The Sparring Ground
 
 One test invader proved the defender works. It didn't prove the defender is *good* — that takes losing to something a few dozen times and adjusting.
 
-"A single Invasion-panel test is a smoke test, not a training loop," your collaborator says. "You can't iterate fifty times against your own live colony without burning it down in the process. That's what Arena is actually for."
+"A single wave is a smoke test, not a training loop," your collaborator says. "You've got a `curl` command that can throw another one at you any time you want. Let's actually use it that way."
 
 See `docs/roadmap.md` for the full season.

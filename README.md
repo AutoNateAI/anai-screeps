@@ -71,7 +71,7 @@ The full season is written — see `docs/roadmap.md` for loglines and arc groupi
 10. `docs/tutorials/10-ai-collaboration.md` — Two Minds
 11. `docs/tutorials/11-scouting.md` — Scouting the Dark
 12. `docs/tutorials/12-pvp-fundamentals.md` — The First Skirmish
-13. `docs/tutorials/13-arena.md` — The Arena
+13. `docs/tutorials/13-sparring-ground.md` — The Sparring Ground
 14. `docs/tutorials/14-running-the-league.md` — Open the Gates
 
 ## League

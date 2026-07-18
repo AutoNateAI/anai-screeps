@@ -30,11 +30,12 @@ Copy this block into `league/results/<match-id>.md` for each completed match:
 ```text
 Match: <match-id>
 Date:
-Format: Arena | World
+Format: Sparring Benchmark | World
 Contestants: <callsign A> vs <callsign B>
 Commit hashes: <A commit> / <B commit>
+Benchmark parameters: (wave count / delay used, if Sparring Benchmark)
+Waves survived: <A: n> / <B: n>
 Winner:
 Score breakdown: (fill in from the tables above)
-Replay link/file:
 Notes:
 ```
