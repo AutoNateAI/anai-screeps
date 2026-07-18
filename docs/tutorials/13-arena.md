@@ -2,7 +2,7 @@
 
 *Episode 13: The Arena*
 
-"The World is the wrong place to learn this the hard way," your collaborator says. "Arena exists so you can lose fifty times in an afternoon and only spend an afternoon."
+"One test invader proved the defender works," your collaborator says. "It didn't prove the defender is good. For that you need to lose fifty times in an afternoon — and you can't do that to your own live colony without burning it down in the process."
 
 Everything you've built so far lives in one persistent colony that took thirteen episodes to grow. Arena throws that away on purpose.
 
@@ -20,7 +20,8 @@ Understand what Screeps Arena is, how it differs from the World server this whol
 Tutorial 12 is complete:
 
 - `role.defender.js` exists and you understand the combat numbers from its Step 1 table.
-- You've internalized the honest limitation from Episodes 7 and 12: this local World server doesn't give you real hostiles to test against.
+- You've triggered at least one test invasion via the Invasion panel and watched the defender respond.
+- Screeps: Arena installed and runs on the same machine as everything else this season — it's a separate Steam app, not a hosted service. It does require a one-time Steam sign-in to launch, the same as the World client did back in Episode 1; nothing after that needs a network connection to iterate on your script.
 
 ## Step 1: What Arena Actually Is
 

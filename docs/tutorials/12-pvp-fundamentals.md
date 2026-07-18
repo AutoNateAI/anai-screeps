@@ -13,7 +13,7 @@ Give the colony its first combat-capable creep and understand the mechanics well
 - Learn what `ATTACK`, `RANGED_ATTACK`, `HEAL`, and `TOUGH` actually do, in numbers
 - Understand rampart tanking — why a defender should fight from a rampart tile, not in open terrain
 - Add `role.defender.js` and a threat-responsive population override
-- Understand, honestly, where you can and can't verify this works
+- Trigger a real test invasion on this local server and watch the defender fight it
 
 ## Prerequisites
 
@@ -120,14 +120,23 @@ function spawnMissingRoles() {
 
 Add the matching `else if` branch to the dispatch loop for `defender`, same as every role before it.
 
-## Step 5: A Note on Testing This Locally
+## Step 5: Trigger a Test Invasion
 
-Same honest limit as Episode 7: this local server's default mods don't spawn NPC invaders, so you likely won't see `role.defender.js` fight anything here. The code is correct — it will engage the instant a hostile creep exists in the room — but "correct" and "combat-tested" are different claims, and this episode can only make the first one on this setup.
+Use the same Invasion panel from Episode 7, Step 7: open your room's side panel in the client, go to the **Invasion** tab, click **Create an invader**, then click an exit tile in your room.
 
-Two ways to actually validate this before the World or a real tournament match:
+This time watch `role.defender.js` instead of the tower. The population override from Step 4 should notice `FIND_HOSTILE_CREEPS` returning something and start producing defenders on the next spawn cycle — if you don't already have two on hand, there will be a gap between the invader arriving and your first defender reaching it. That gap is real and worth observing, not a bug to fix in this episode.
 
-- Screeps Arena (Episode 13) — small maps, fast iteration, built specifically for testing combat logic like this without risking a live colony.
-- A second local account. `screepsmod-auth` supports registering more than one profile on this server (see `docs/local-screeps.md`). Claiming a nearby room under a second profile and moving a creep into your defended room is a legitimate, low-stakes way to see `getActiveBodyparts` and range checks actually fire against something real.
+Checkpoint:
+
+```js
+_.filter(Game.creeps, (creep) => creep.memory.role === 'defender').length
+```
+
+Expected result: `2`, once `spawnMissingRoles` catches up to the threat.
+
+Watch the client as the defender closes distance. It should fire `rangedAttack` starting at range 3, keep firing as it closes, and add `attack` once it's adjacent — both actions can land in the same tick, which is why Step 3's code checks both conditions independently instead of using `else if`.
+
+If you built ramparts with real hit points in Episode 7, try positioning a defender on one before the invader arrives (its default idle behavior already does this) and compare how the fight goes versus a defender caught in the open.
 
 ## Troubleshooting
 
@@ -137,6 +146,8 @@ If `spawnMissingRoles` never produces a defender during a threat, confirm `getPo
 
 If the defender walks into the open instead of holding a rampart tile, confirm at least one rampart exists and has been assigned real hit points by the builder (Episode 7, Step 6) — `find(FIND_MY_STRUCTURES, ...)` will still return a rampart with 1 hit point, and standing on it won't help much.
 
+If the Invasion tab isn't visible, see Episode 7's troubleshooting — it's scoped to rooms you own.
+
 ## Completion Criteria
 
 You are done when:
@@ -144,7 +155,7 @@ You are done when:
 - `role.defender.js` exists and is wired into `main`.
 - The population system spawns defenders only when a hostile is present in the home room.
 - You can explain, from the Step 1 table, why a defender body mixes `TOUGH`, `ATTACK`, and `RANGED_ATTACK` instead of maximizing just one.
-- You understand the two real ways to verify this code against an actual opponent.
+- You've triggered a test invasion and watched a defender actually engage it, not just verified the code compiles.
 
 ## Learning Notes
 
@@ -152,13 +163,14 @@ After completing the tutorial, write down:
 
 - Why does the defender check `RANGED_ATTACK` before `ATTACK` in the same tick? What would go wrong if a creep with both tried to only ever melee?
 - What's the failure mode if `defender` population jumps to `2` but the room's `energyCapacityAvailable` can't afford even one defender body?
+- How many ticks passed between the invader spawning and your first defender reaching it? What would close that gap — a standing defender population instead of `0`, or something else?
 - Boosts (a lab structure, unlocked at RCL6) can amplify these numbers significantly. Why does this episode not cover them?
 - If a hostile appeared in `Memory.remoteRoom` instead of your home room, would anything in this episode's code respond? Should it?
 
 ## Next: Episode 13 — The Arena
 
-Combat logic is only theoretical until something can actually shoot back.
+One test invader proved the defender works. It didn't prove the defender is *good* — that takes losing to something a few dozen times and adjusting.
 
-"The World is the wrong place to learn this the hard way," your collaborator says. "Arena exists so you can lose fifty times in an afternoon and only spend an afternoon."
+"A single Invasion-panel test is a smoke test, not a training loop," your collaborator says. "You can't iterate fifty times against your own live colony without burning it down in the process. That's what Arena is actually for."
 
 See `docs/roadmap.md` for the full season.

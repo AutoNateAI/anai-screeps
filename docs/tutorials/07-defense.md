@@ -13,7 +13,7 @@ Give the colony structures that fight back and structures that absorb damage, wi
 - Reach RCL3 and build a tower
 - Write the code that makes the tower actually fire
 - Place ramparts over key structures and teach the builder to raise their hit points
-- Understand honestly what you can and can't test for on this local server
+- Trigger a real test invasion on this local server and watch the tower respond
 
 ## Prerequisites
 
@@ -214,16 +214,37 @@ Game.spawns.Spawn1.room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRU
 
 These values should be climbing, not flat.
 
-## Step 7: A Note on Testing This Locally
+## Step 7: Trigger a Test Invasion
 
-`runTowers` is correct — it will fire the instant `FIND_HOSTILE_CREEPS` returns anything. But the local server config in this repo (`screeps-server/config.yml`, mods: `screepsmod-auth` and `screepsmod-admin-utils` only) doesn't spawn NPC invaders on its own. You may never see this code actually fire in this environment.
+Waiting for a real, energy-triggered invader to show up is impractical for a tutorial — the automatic trigger fires only after roughly 100,000 energy has been mined in a room, which is a real-time wait measured in hours, not a testing loop. The Screeps client ships with exactly this problem solved: a manual invasion tester built for private servers.
 
-That's not a failure of this episode. It's an honest limit of the local setup. Real combat testing happens in one of two places:
+In the room's side panel (Steam client or the browser client at `http://localhost:21025`), find the **Invasion** tab. Click **Create an invader**, then click an exit tile in your room — the client highlights the tile differently once you're hovering a valid exit. A real invader creep spawns there and starts pathing toward your structures, exactly as it would from the automatic trigger.
 
-- The real Screeps World server, where invaders and other players exist.
-- Screeps Arena (Episode 13), a purpose-built environment for testing combat and pathing logic fast, without risking a live colony.
+Checkpoint:
 
-Treat this episode as building the defense correctly, not as proving it under fire. Episode 12 comes back to prove it.
+- An invader creep appears at the exit tile you clicked.
+- Within a tick or two of it coming into tower range, `runTowers()` calls `tower.attack()` on it — watch the tower's targeting beam in the client.
+- The tower's `store[RESOURCE_ENERGY]` visibly drops as it fires.
+
+```js
+Game.spawns.Spawn1.room.find(FIND_HOSTILE_CREEPS)
+```
+
+Expected result, while the invader is alive: an array with one creep in it, not empty.
+
+If you want a scriptable alternative to the UI panel — useful for repeatable testing — the private server's CLI can insert a hostile creep directly. From a terminal on the machine running the server:
+
+```sh
+docker exec -it autonate-screeps screeps-launcher cli
+```
+
+Then, on a single line inside the CLI:
+
+```js
+storage.db['rooms.objects'].insert({ room: '<your-room-name>', x: 0, y: 25, type: 'creep', user: '2', name: 'invader_test', body: [{ type: 'attack', hits: 100 }, { type: 'move', hits: 100 }], hits: 200, hitsMax: 200, ticksToLive: 1500 })
+```
+
+Adjust `x`/`y` to a real exit tile in your room and `body` to whatever mix you want to test against. This is more fragile than the Invasion panel — it depends on the exact private-server database schema — so prefer the UI method unless you specifically need scripted, repeatable spawns.
 
 ## Troubleshooting
 
@@ -233,6 +254,8 @@ If the tower never fires in a room where you can confirm a hostile is present, c
 
 If ramparts block your own creeps' movement, they shouldn't — ramparts only block creeps belonging to other players by default. If your own creeps can't pass, check whether the rampart's `public` flag or ownership is set correctly.
 
+If the Invasion tab doesn't appear in the room panel, confirm you're looking at a room you own — the tester is scoped to your own claimed rooms, not neutral ones.
+
 ## Completion Criteria
 
 You are done when:
@@ -241,6 +264,7 @@ You are done when:
 - `runTowers()` is running every tick as part of `main`.
 - The hauler prioritizes a low-energy tower over extensions.
 - At least one rampart is placed and its hit points are increasing under the builder's repair logic.
+- You've triggered a test invasion through the Invasion panel and watched the tower actually fire on it.
 
 ## Learning Notes
 
@@ -250,10 +274,11 @@ After completing the tutorial, write down:
 - If two hostiles entered at once, would `findClosestByRange` pick the more dangerous one or just the nearer one? Is that the right default?
 - Why exclude walls from the builder's repair logic instead of just giving walls a repair priority of last?
 - What would you need to add to this room's defenses before you'd feel comfortable expanding to a second room?
+- How many ticks passed between the test invader spawning and the tower's first shot? Was the tower already fueled, or did the hauler have to catch up?
 
 ## Next: Episode 8 — Beyond the Border
 
-The colony can survive an attack now, at least on paper. It still only exists in one room.
+The colony can survive an attack now — you watched it happen. It still only exists in one room.
 
 "You've been treating this room like the whole world," your collaborator says. "It's one room. There are exits on all four sides, and every one of them leads somewhere you haven't looked yet."
 
