@@ -43,6 +43,28 @@ SCREEPS_LOCAL_DEFAULT_USER=autonate
 
 See `docs/local-screeps.md` for the current workflow notes.
 
+## Offline Screeps Docs
+
+Official Screeps docs can be mirrored locally under `local-reference/`, which is ignored by Git.
+
+Serve the mirrored docs with:
+
+```sh
+cd local-reference/screeps-docs-official/docs.screeps.com
+python3 -m http.server 8080
+```
+
+Then open:
+
+- Guide: `http://localhost:8080/`
+- API reference: `http://localhost:8080/api/`
+
+If the mirror is missing, refresh it while online:
+
+```sh
+wget --mirror --page-requisites --convert-links --adjust-extension --no-parent --domains docs.screeps.com --directory-prefix local-reference/screeps-docs-official https://docs.screeps.com/
+```
+
 ## Orientation
 
 - `docs/world-orientation.md`
