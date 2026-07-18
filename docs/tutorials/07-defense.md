@@ -2,9 +2,9 @@
 
 *Episode 7: Under Siege*
 
-Nothing has attacked this room yet. Your collaborator doesn't treat that as good news.
+Nothing has attacked this room yet. Your collaborator doesn't treat that as good news — it treats it the way a good CTO treats "we've never had a security incident."
 
-"Every tick this colony runs undefended is a tick you got lucky," it says. "You have a tower slot unlocked and nothing built in it. You have ramparts allowed and none placed. That's not a peaceful room. That's an unprotected one that hasn't been found yet."
+"Every tick this colony runs undefended is a tick you got lucky," it says. "You have a tower slot unlocked and nothing built in it. You have ramparts allowed and none placed. That's not a peaceful room. That's an unpatched one that hasn't been found yet."
 
 ## Goal
 
@@ -280,6 +280,6 @@ After completing the tutorial, write down:
 
 The colony can survive an attack now — you watched it happen. It still only exists in one room.
 
-"You've been treating this room like the whole world," your collaborator says. "It's one room. There are exits on all four sides, and every one of them leads somewhere you haven't looked yet."
+"You've been treating this room like the whole world," your collaborator says. "It's one room. There are exits on all four sides, and every one of them leads somewhere you haven't looked yet — the 'have you considered a second market' conversation, except the market is an actual adjacent room."
 
 See `docs/roadmap.md` for the full season.

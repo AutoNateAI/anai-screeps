@@ -2,11 +2,11 @@
 
 *Episode 4: The Controller's Price*
 
-The controller crosses its first threshold while you're not even watching it. Your collaborator notices before you do.
+The controller crosses its first threshold while you're not even watching it — like finding out you hit a revenue milestone from a Slack notification instead of a spreadsheet you were staring at. Your collaborator notices before you do.
 
-"Room Controller Level 2," it says. "You've been upgrading it because the upgrader role needed a job. Now it's paying you back — extensions just unlocked. That's more energy capacity per spawn cycle, which means bigger creeps, which means everything downstream of this gets faster."
+"Room Controller Level 2," it says. "You've been upgrading it because the upgrader role needed a job to do. Now it's paying you back — extensions just unlocked. More energy capacity per spawn cycle, bigger creeps, everything downstream gets faster. This is what people mean when they say 'compounding.'"
 
-The controller was never just a progress bar. It's the thing that decides what you're allowed to build next.
+The controller was never just a progress bar. It's the thing that decides what you're allowed to build next, same as revenue decides what headcount you're allowed to add.
 
 ## Goal
 
@@ -241,6 +241,6 @@ After completing the tutorial, write down:
 
 The builder has a job now, but it's a job with an end date — five extensions, then nothing left to build.
 
-"That's the wrong way to think about a builder," your collaborator says. "The room isn't going to stop needing things built. It's going to need roads next, so your creeps stop wasting half their lifetime walking across open terrain."
+"That's the wrong way to think about a builder," your collaborator says. "The room isn't going to stop needing things built. It's going to need roads next, so your creeps stop torching half their lifetime walking across open terrain like it's a commute nobody's reimbursing."
 
 See `docs/roadmap.md` for the full season.

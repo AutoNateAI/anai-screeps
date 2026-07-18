@@ -1,16 +1,16 @@
 # Welcome to the Screeps World
 
-You wake up in a room you did not build.
+You wake up in a room you did not build. No handoff doc, no README, no departing engineer to Slack you with "quick question."
 
 They call you AutoNate. It's a callsign, not a birth name — the Foundry gives it to every architect who ships out with nothing but a terminal, a spawn beacon, and an AI collaborator riding along. The full story of how you got here is in `docs/story/00-prologue.md`. This document is the world; that one is the plot.
 
-There is no avatar walking around with a sword. There is no quest marker waiting for you. There is only terrain, energy, a controller, a spawn, and the code you are willing to write.
+There's no avatar walking around with a sword. No quest marker hovering over your next objective like the game feels bad for you. There's only terrain, energy, a controller, a spawn, and the code you're willing to write.
 
-Screeps is a persistent programming world. The world keeps ticking whether you are staring at it or not. Your colony survives because your systems keep working. A good decision becomes a reusable behavior. A bad assumption becomes a broken economy. A missing fallback becomes an idle spawn. Every line of code either helps the colony adapt or teaches you why it failed.
+Screeps is a persistent programming world. The world keeps ticking whether you're staring at it or not — closer to a production server than a video game. Your colony survives because your systems keep working, not because you personally showed up. A good decision becomes a reusable behavior. A bad assumption becomes a broken economy. A missing fallback becomes an idle spawn — the Screeps version of a stalled deploy nobody's watching. Every line of code either helps the colony adapt or teaches you why it failed. Both outcomes ship you information.
 
-That is why this game belongs inside AutoNateAI.
+That's why this game belongs inside AutoNateAI.
 
-We are not only learning JavaScript. We are learning how to design systems with feedback loops, constraints, resources, agents, memory, automation, debugging, and strategy. We are learning how to work with AI as a collaborator while still understanding the world well enough to judge the answer. The goal is not to copy code into the console. The goal is to become the kind of builder who can observe a complex world, describe what is happening, make a plan, implement a system, test it, and improve it over time.
+We're not only learning JavaScript. We're learning how to design systems with feedback loops, constraints, resources, agents, memory, automation, debugging, and strategy — the actual job, underneath whatever language you happen to be writing it in. We're learning how to work with AI as a collaborator while still understanding the world well enough to judge the answer, because "the AI said so" has never once shipped a good system on its own. The goal isn't to copy code into the console. The goal is to become the kind of builder who can observe a complex world, describe what's happening, make a plan, implement a system, test it, and improve it over time — then do it again next tick, because there's always a next tick.
 
 Welcome to the world.
 
@@ -39,7 +39,7 @@ In AutoNateAI terms, Screeps is our live systems simulator. It gives us a world 
 
 ## The First Mental Model
 
-Think of your colony as a small software company crash-landed on an alien world.
+Think of your colony as a startup that crash-landed on an alien world with no runway extension coming.
 
 - The spawn is your factory.
 - Energy is your budget.
@@ -51,9 +51,9 @@ Think of your colony as a small software company crash-landed on an alien world.
 - Hostiles and decay are operational risk.
 - Your codebase is the management system.
 
-If the company has no workers, nothing moves. If the workers have unclear jobs, they waste time. If the budget is empty, production stops. If the code has no memory, the colony forgets what it was doing. If there is no strategy, each tick becomes a random scramble.
+If the company has no workers, nothing moves. If the workers have unclear jobs, they waste time — same as any team with no job descriptions, they'll just do whatever felt most urgent five minutes ago. If the budget is empty, production stops, full stop, no exceptions, no bridge round. If the code has no memory, the colony forgets what it was doing, same as a team with no documentation. If there's no strategy, each tick becomes a random scramble, which is a nice way of saying "everyone's in react mode and nobody's driving."
 
-The game teaches systems thinking because everything is connected.
+The game teaches systems thinking because everything is connected. You will feel this in your chest the first time an idle spawn costs you real progress and you realize it was entirely your fault.
 
 ## Screeps Components at a Glance
 
@@ -106,7 +106,7 @@ The AI collaborator asks, "What prompt gives enough context for useful debugging
 
 The tournament organizer asks, "How would we turn this failure into a challenge students can learn from?"
 
-That is the program.
+That's the program. Four job titles, one stuck creep.
 
 ## Early Strategy Priorities
 
@@ -143,15 +143,15 @@ Prioritize:
 
 ## What Students Should Feel
 
-Students should feel like they have entered a real operating environment.
+Students should feel like they've entered a real operating environment, not a demo.
 
-This is not a worksheet where every answer is already shaped. It is a world where their code has consequences. They will make workers, break workers, forget edge cases, fix loops, rename roles, ask AI for help, reject bad suggestions, and slowly learn to think like system builders.
+This isn't a worksheet where every answer is already shaped for you. It's a world where their code has real consequences — nobody's grading on effort. They'll make workers, break workers, forget edge cases, fix loops, rename roles, ask AI for help, reject bad suggestions, and slowly learn to think like system builders instead of people copying tutorials.
 
-The first victory is not domination.
+The first victory isn't domination.
 
-The first victory is watching one worker harvest energy, bring it home, and repeat the loop because the system told it to.
+The first victory is watching one worker harvest energy, bring it home, and repeat the loop — because the system told it to, not because you're standing there micromanaging it like a nervous manager.
 
-That is the beginning of automation.
+That's the beginning of automation. Everything after this is just that same feeling, at a bigger scale, with higher stakes.
 
 ## First Questions to Carry Forward
 
@@ -170,7 +170,7 @@ Every answer becomes curriculum.
 
 Every bug becomes a lesson.
 
-Every working loop becomes a building block for the league.
+Every working loop becomes a building block for the league. Nothing here gets thrown away, including the stuff that breaks.
 
 ## The Story So Far
 

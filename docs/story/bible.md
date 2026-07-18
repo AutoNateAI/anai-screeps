@@ -6,7 +6,7 @@ Reference doc for anyone — human or AI — writing a future episode. Keeps nam
 
 **AutoNate** — a callsign, not a birth name. Given by the Foundry to every architect who ships out with a terminal, a spawn beacon, and an AI collaborator. The narrative is second person: the student reading the tutorial *is* AutoNate. Do not give AutoNate a face, gender, or backstory beyond what's in `docs/story/00-prologue.md` — the callsign is meant to be worn by whoever is reading.
 
-**The AI collaborator** — deliberately unnamed. It's the stand-in for whatever AI tool the student is actually pairing with (Claude, Codex, Gemini, etc.), so it never gets a proper name or a fixed personality beyond: direct, a little dry, narrates telemetry/state instead of giving orders. It observes and reports; AutoNate decides and types.
+**The AI collaborator** — deliberately unnamed. It's the stand-in for whatever AI tool the student is actually pairing with (Claude, Codex, Gemini, etc.), so it never gets a proper name. It observes and reports; AutoNate decides and types. See Voice, below, for how it talks.
 
 ## Factions and Terms
 
@@ -36,3 +36,16 @@ The Explorer → Architect competency ladder (see `docs/roadmap.md`) is the seas
 - Never rename or fictionalize a real Screeps mechanic. `WORK`/`CARRY`/`MOVE`, RCL, `Game.spawns`, error codes — all real, all stay exactly as the API defines them. The fiction sits on top of the mechanics; it never replaces or obscures them.
 - The AI collaborator can foreshadow the *next* episode's problem (e.g., flagging that two harvesters will fight over one source) but should never hand AutoNate the solution before the tutorial teaches it.
 - No combat, hostiles, or stakes-raising language until the arc that actually introduces them (Developer arc onward). Early episodes stay about competence, not danger.
+
+## Voice
+
+Both the narrator (cold opens, scene-setting) and the AI collaborator's dialogue are written in one voice: a confident, funny, technically-credible startup-founder-slash-decade-of-shipping-code voice. Not a fantasy-novel narrator. More like a sharp co-founder narrating your own build log back to you.
+
+What that means in practice:
+
+- **Direct, no throat-clearing.** Get to the point, then make the point land with a joke or a real comparison, not three sentences of atmosphere first.
+- **Real engineering-culture and startup-culture references, used precisely, not as decoration.** MVPs, pre-seed energy, standups, shipping to prod on a Friday, the seventeenth Chrome tab that's somehow still open, the pitch deck nobody reads past slide 4. Deploy these when they actually map onto what's happening in the room — a controller unlocking extensions is a real "we finally have runway" moment, not just an excuse for a joke.
+- **Confident, a little cocky, self-aware about it.** The collaborator can clown AutoNate for a rookie mistake and still clearly be on their side. It respects competence and calls out sloppy thinking — both.
+- **Short sentences do the comedic heavy lifting.** A one-line punchline after a longer technical beat lands better than a long riff. Don't over-explain the joke.
+- **Never punch down, never perform an accent or dialect on the page.** Humor comes from precision, timing, and lived engineering/founder experience — not from trying to sound like anyone specific. When in doubt, cut the line that's reaching and keep the one that's earned.
+- **The technical content is still sacred.** Voice lives in the cold opens, the collaborator's lines, and the episode-to-episode hooks. It never leaks into a code block, a checkpoint, or an error-code table — those stay precise and boring on purpose.

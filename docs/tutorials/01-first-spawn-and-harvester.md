@@ -2,11 +2,11 @@
 
 *Episode 1: Touchdown*
 
-The hatch is open. The room is quiet. Your collaborator is still narrating the scan results, but the console is yours now.
+The hatch is open. The room is quiet. Your collaborator is still narrating the scan results, but the console is yours now — welcome to Day 1, no orientation packet included.
 
-Somewhere else on this planet, other Foundry architects are doing exactly what you're about to do: picking a room, placing a spawn, and watching whether their first worker completes a single lap without dying, getting stuck, or standing still. Nobody skips this step. Nobody gets to.
+Somewhere else on this planet, other Foundry architects are doing exactly what you're about to do: picking a room, placing a spawn, and watching whether their first worker can complete one single lap without dying, getting stuck, or just standing there like it's waiting on a code review. Nobody skips this step. Nobody gets to — not even the ones who've shipped to production for a decade.
 
-This is the first system you'll ship. Keep it small. Keep it visible. Everything after this builds on whatever you learn watching it run.
+This is the first system you'll ship. Keep it small. Keep it visible. Everything after this builds on whatever you learn watching it run, so resist the urge to get clever before you've even proven the loop works.
 
 ## Goal
 
@@ -258,7 +258,7 @@ After completing the tutorial, write down:
 
 ## Next: Episode 2 — Two Sources, One Colony
 
-Your collaborator flags it before you do: "Harvester1 only knows about `sources[0]`. The second you spawn a friend for it, they're going to fight over the same source and let the other one sit there untouched."
+Your collaborator flags it before you do: "Harvester1 only knows about `sources[0]`. The second you spawn a friend for it, they're going to fight over the same source and let the other one sit there untouched — real 'two founders, one laptop' behavior."
 
 That's the problem Episode 2 picks up: teaching the colony to assign work instead of guessing at it.
 

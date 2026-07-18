@@ -2,7 +2,7 @@
 
 *Episode 10: Two Minds*
 
-"You've been working with me this whole time," your collaborator says, "but you've never had to think about *how* you were working with me. That's the next skill. Not writing better Screeps code — writing better prompts about your Screeps code."
+"You've been working with me this whole time," your collaborator says, "but you've never had to think about *how* you were working with me. That's the next skill. Not writing better Screeps code — writing better prompts about your Screeps code. There's a version of you that's been shipping for a decade and still writes 'it's broken, pls help' in every bug report. Don't be that version."
 
 Nine episodes of debugging happened mostly by instinct. This one makes the instinct repeatable.
 
@@ -114,6 +114,6 @@ After completing the tutorial, write down (in your journal, not just here):
 
 Every episode so far has been about a room you already control. That's about to change.
 
-"You reserved a room in Episode 8 without really looking at it first," your collaborator says. "That worked because it was empty. It won't always be."
+"You reserved a room in Episode 8 without really looking at it first," your collaborator says. "That worked because it was empty. It won't always be — same energy as signing a lease on a spot you drove past once, at night, with your high beams on."
 
 See `docs/roadmap.md` for the full season.

@@ -47,6 +47,10 @@ See `docs/local-screeps.md` for the current workflow notes.
 
 - `docs/world-orientation.md`
 
+## Player Guide (Free, No Program Required)
+
+Just want to play and get competitive, no narrative or curriculum attached? Start at `docs/player-guide/README.md` — the same tested code and mechanics as the tutorials below, stripped down to a fast reference.
+
 ## The Story
 
 Every tutorial is an episode in AutoNate's run through the Foundry.

@@ -2,9 +2,9 @@
 
 *Episode 14: Open the Gates*
 
-"There's one role left," your collaborator says, "and it's not a creep. It's you. Somebody has to run the league the next architect drops into."
+"There's one role left," your collaborator says, "and it's not a creep. It's you. Somebody has to run the league the next architect drops into — congratulations, you've been promoted to management."
 
-Thirteen episodes ago you were a single hardcoded creep bouncing between one source and one spawn. You're being asked to build the thing that trained you.
+Thirteen episodes ago you were a single hardcoded creep bouncing between one source and one spawn. You're being asked to build the thing that trained you. That's either the most startup thing that's ever happened to you, or the most startup thing that's about to.
 
 ## Goal
 
@@ -127,8 +127,8 @@ After completing the tutorial, write down:
 
 ## Season Recap
 
-Fourteen episodes ago, AutoNate was a callsign on a drop pod hull and a blank room with a blinking cursor. The colony that exists now runs itself: sources assigned without collision, roles dispatched without hardcoded names, a controller climbed on purpose, roads and containers built ahead of need, mining and hauling split for throughput, a tower and ramparts that hold a line, a second room reserved and feeding the first, CPU treated as a budget instead of an afterthought, a debugging practice worth writing down, scouting that remembers what it saw, a defender that knows the difference between a threat and an empty room, a fast lab for testing combat before it's real, and now — a league other architects can drop into.
+Fourteen episodes ago, AutoNate was a callsign on a drop pod hull and a blank room with a blinking cursor. No deck, no runway, no cofounder — just a spawn and a bad idea that turned out not to be bad. The colony that exists now runs itself: sources assigned without collision, roles dispatched without hardcoded names, a controller climbed on purpose, roads and containers built ahead of need, mining and hauling split for throughput, a tower and ramparts that hold a line, a second room reserved and feeding the first, CPU treated as a budget instead of an afterthought, a debugging practice worth writing down, scouting that remembers what it saw, a defender that knows the difference between a threat and an empty room, a fast lab for testing combat before it's real, and now — a league other architects can drop into.
 
-"The Foundry didn't train you to win," your collaborator says. "It trained you to build something that keeps running after you stop watching it. You just did that twice — once with a colony, once with a league."
+"The Foundry didn't train you to win," your collaborator says. "It trained you to build something that keeps running after you stop watching it. You just did that twice — once with a colony, once with a league. Most founders take a decade to learn that. You did it in fourteen episodes, and you didn't even need a Series A."
 
 See `docs/roadmap.md` for the full season, start to finish.

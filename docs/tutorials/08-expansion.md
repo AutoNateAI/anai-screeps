@@ -2,7 +2,7 @@
 
 *Episode 8: Beyond the Border*
 
-"You've been treating this room like the whole world," your collaborator says. "It's one room. There are exits on all four sides, and every one of them leads somewhere you haven't looked yet."
+"You've been treating this room like the whole world," your collaborator says. "It's one room. There are exits on all four sides, and every one of them leads somewhere you haven't looked yet — this is the 'have you considered a second market' conversation, except the market is an actual adjacent room."
 
 You pull up the room's exits for the first time since you landed. Four directions. Four unknowns.
 
@@ -246,6 +246,6 @@ After completing the tutorial, write down:
 
 Nine roles now. Two rooms. More creeps than you've ever run at once.
 
-"Every one of these creeps runs its logic every single tick," your collaborator says. "So far that's been free. It stops being free the moment CPU becomes the thing you're managing instead of energy."
+"Every one of these creeps runs its logic every single tick," your collaborator says. "So far that's been free. It stops being free the moment CPU becomes the thing you're managing instead of energy — welcome to your first real infra bill."
 
 See `docs/roadmap.md` for the full season.

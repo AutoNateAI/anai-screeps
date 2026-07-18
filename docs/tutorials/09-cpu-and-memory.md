@@ -2,9 +2,9 @@
 
 *Episode 9: The Weight of Memory*
 
-Nothing in this colony has ever cost you CPU you noticed. Nine creeps across two rooms changed that.
+Nothing in this colony has ever cost you CPU you noticed. Nine creeps across two rooms changed that — turns out scale finds every lazy decision you made back when nobody was counting.
 
-"Every `room.find()` call scans every object of that type in the room," your collaborator says. "Every `findClosestByPath` runs actual pathfinding. You've been calling both, every tick, for every creep, since Episode 3. It was free when you had three creeps. It isn't free anymore."
+"Every `room.find()` call scans every object of that type in the room," your collaborator says. "Every `findClosestByPath` runs actual pathfinding. You've been calling both, every tick, for every creep, since Episode 3. It was free when you had three creeps. It is extremely not free anymore, and your bucket's about to let you know it."
 
 ## Goal
 
@@ -168,6 +168,6 @@ After completing the tutorial, write down:
 
 Every optimization in this episode came from a conversation, not a solo debugging session.
 
-"You've been working with me this whole time," your collaborator says, "but you've never had to think about *how* you were working with me. That's the next skill. Not writing better Screeps code — writing better prompts about your Screeps code."
+"You've been working with me this whole time," your collaborator says, "but you've never had to think about *how* you were working with me. That's the next skill. Not writing better Screeps code — writing better prompts about your Screeps code. There's a version of you that still writes 'it's broken, pls help' in every bug report. Let's fix that before it's a habit."
 
 See `docs/roadmap.md` for the full season.

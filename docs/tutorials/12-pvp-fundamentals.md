@@ -2,7 +2,7 @@
 
 *Episode 12: The First Skirmish*
 
-"Scouting tells you where the danger is before it arrives," your collaborator says. "It doesn't tell you what to do once it's here. That's combat, and none of these nine roles were built for it."
+"Scouting tells you where the danger is before it arrives," your collaborator says. "It doesn't tell you what to do once it's here. That's combat, and none of these nine roles were built for it — you've basically got a whole company with no security team and a genuinely great CRM."
 
 Every creep you've written so far either gathers, builds, or moves energy. None of them can throw a punch.
 
@@ -181,6 +181,6 @@ After completing the tutorial, write down:
 
 One test invader proved the defender works. It didn't prove the defender is *good* — that takes losing to something a few dozen times and adjusting.
 
-"A single wave is a smoke test, not a training loop," your collaborator says. "You've got a `curl` command that can throw another one at you any time you want. Let's actually use it that way."
+"A single wave is a smoke test, not a training loop," your collaborator says. "You've got a `curl` command that can throw another one at you any time you want. Let's actually use it that way — call it load testing, except the load is trying to kill your workers."
 
 See `docs/roadmap.md` for the full season.

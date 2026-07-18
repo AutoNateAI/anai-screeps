@@ -2,9 +2,9 @@
 
 *Episode 13: The Sparring Ground*
 
-"A single wave is a smoke test, not a training loop," your collaborator says. "You've got a `curl` command that can throw another one at you any time you want. Let's actually use it that way."
+"A single wave is a smoke test, not a training loop," your collaborator says. "You've got a `curl` command that can throw another one at you any time you want. Let's actually use it that way — this is load testing, except the load is trying to kill your workers."
 
-Episode 12 proved `role.defender.js` fights. It didn't prove it fights *well*. That takes losing a few times, in a row, on purpose.
+Episode 12 proved `role.defender.js` fights. It didn't prove it fights *well*. That takes losing a few times, in a row, on purpose — same as any real training loop, in code or anywhere else.
 
 ## Goal
 
@@ -95,6 +95,6 @@ After completing the tutorial, write down:
 
 You've played the game from every angle this season offers: economy, infrastructure, logistics, defense, expansion, and now repeated, deliberate combat testing.
 
-"There's one role left," your collaborator says, "and it's not a creep. It's you. Somebody has to run the league the next architect drops into."
+"There's one role left," your collaborator says, "and it's not a creep. It's you. Somebody has to run the league the next architect drops into — congratulations, you've been promoted to management."
 
 See `docs/roadmap.md` for the full season.

@@ -2,11 +2,11 @@
 
 *Episode 6: Haulers and Miners*
 
-"Your harvesters spend more time walking than harvesting," your collaborator says. "Every round trip is dead time — no energy coming out of the ground while a creep is mid-hallway."
+"Your harvesters spend more time walking than harvesting," your collaborator says. "Every round trip is dead time — no energy coming out of the ground while a creep's mid-hallway doing nothing useful."
 
-It has a fix, and it's uncomfortable at first: stop making creeps that do both jobs.
+It has a fix, and it's uncomfortable at first: stop making creeps that do both jobs. Sound familiar? It's the same conversation every ten-person startup has right before they hire a specialist instead of another generalist.
 
-"One creep stands on the source and never moves again. Another creep does nothing but carry. Neither one is as flexible as what you've got now. Both together are faster than what you've got now."
+"One creep stands on the source and never moves again. Another creep does nothing but carry. Neither one is as flexible as what you've got now. Both together ship more than what you've got now — that's the whole argument for specialization in one sentence."
 
 ## Goal
 
@@ -238,6 +238,6 @@ After completing the tutorial, write down:
 
 The colony finally runs itself. That was always going to attract attention.
 
-"Nothing's approached this room yet," your collaborator says, "but it will. And when it does, none of these five roles know how to fight, and nothing in this room can hurt an attacker back."
+"Nothing's approached this room yet," your collaborator says, "but it will. And when it does, none of these five roles know how to fight, and nothing in this room can hurt an attacker back. You've built a nice office with no lock on the door."
 
 See `docs/roadmap.md` for the full season.

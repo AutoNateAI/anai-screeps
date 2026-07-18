@@ -2,7 +2,7 @@
 
 *Episode 11: Scouting the Dark*
 
-"You reserved a room in Episode 8 without really looking at it first," your collaborator says. "That worked because it was empty. It won't always be."
+"You reserved a room in Episode 8 without really looking at it first," your collaborator says. "That worked because it was empty. It won't always be — that's the same energy as signing a lease on a spot you drove past once, at night, with your high beams on."
 
 You've been picking rooms by moving a creep in and eyeballing the client. That doesn't scale past one room, and it definitely doesn't scale past rooms you're considering but haven't committed to yet.
 
@@ -180,6 +180,6 @@ After completing the tutorial, write down:
 
 You now know what's out there. Some of it, eventually, will know about you too.
 
-"Scouting tells you where the danger is before it arrives," your collaborator says. "It doesn't tell you what to do once it's here. That's combat, and none of these nine roles were built for it."
+"Scouting tells you where the danger is before it arrives," your collaborator says. "It doesn't tell you what to do once it's here. That's combat, and none of these nine roles were built for it — great CRM, zero security team."
 
 See `docs/roadmap.md` for the full season.

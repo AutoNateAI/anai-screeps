@@ -2,11 +2,11 @@
 
 *Episode 2: Two Sources, One Colony*
 
-Your collaborator was right. The moment `Harvester2` showed up, it walked to the exact same source as `Harvester1` and stood there waiting its turn.
+Your collaborator was right, and it's a little smug about it. The moment `Harvester2` showed up, it walked to the exact same source as `Harvester1` and stood there waiting its turn — like two engineers both trying to deploy off the same branch at 4:59 on a Friday.
 
 "That's not a bug," it says. "That's a script that never had to think about more than one worker. It's about to."
 
-Two sources exist in this room. One creep knew that already and ignored it. Two creeps can't afford to.
+Two sources exist in this room. One creep knew that already and ignored it, because it never had competition. Two creeps don't get that luxury.
 
 ## Goal
 
@@ -193,7 +193,7 @@ After completing the tutorial, write down:
 
 Two harvesters doing the same job is manageable. It won't stay that way.
 
-"Next time you spawn a creep," your collaborator says, "it's not going to be another harvester. It's going to have a different job entirely — and this script has no idea how to tell the difference."
+"Next time you spawn a creep," your collaborator says, "it's not going to be another harvester. It's going to have a different job entirely — and this script has no idea how to tell the difference. Right now your whole org chart is one job title."
 
 `runHarvester` is the only behavior this colony knows. Episode 3 gives it more than one.
 

@@ -4,9 +4,9 @@
 
 "Watch your harvesters," your collaborator says. "Really watch them. Count how many ticks they spend just walking."
 
-You watch. It's more than you expected. Every trip from source to spawn crosses the same dozen tiles, over and over, at full terrain cost, forever.
+You watch. It's more than you expected — basically a calendar full of meetings that could've been an email. Every trip from source to spawn crosses the same dozen tiles, over and over, at full terrain cost, forever.
 
-"Roads don't make a creep smarter," it says. "They make the same creep faster, permanently, for a one-time cost. That's the best trade this game offers you."
+"Roads don't make a creep smarter," it says. "They make the same creep faster, permanently, for a one-time cost. That's the best trade this game offers you — infrastructure spend that actually pays itself back, unlike half the tools on your company card."
 
 ## Goal
 
@@ -156,7 +156,7 @@ After completing the tutorial, write down:
 
 The containers sitting by each source are about to stop being decoration.
 
-"Right now your harvester still walks the source-to-spawn round trip every single time it's full," your collaborator says. "A creep with more `WORK` parts could just stand on that source and never move again — if something else picks up what it drops."
+"Right now your harvester still walks the source-to-spawn round trip every single time it's full," your collaborator says. "A creep with more `WORK` parts could just stand on that source and never move again — if something else picks up what it drops. That's the whole pitch for a logistics team."
 
 That something else is a hauler. Episode 6 splits harvesting from hauling for good.
 

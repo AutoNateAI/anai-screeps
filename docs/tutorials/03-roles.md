@@ -2,9 +2,9 @@
 
 *Episode 3: Job Descriptions*
 
-"Every creep in this colony does the same job," your collaborator says. "Harvest, walk, deliver, repeat. That's fine for a colony of two. It falls apart the moment you need a third creep to do something else."
+"Every creep in this colony does the same job," your collaborator says. "Harvest, walk, deliver, repeat. That's a two-person startup where everyone's Head of Everything. Cute for a minute. Falls apart the second you need a third hire to actually specialize."
 
-You need energy going somewhere other than the spawn now. The controller has been sitting there, unclaimed by your attention, since the day you landed.
+You need energy going somewhere other than the spawn now. The controller's been sitting there since the day you landed, ignored the way founders ignore paperwork they know they'll need eventually.
 
 ## Goal
 
@@ -239,6 +239,6 @@ After completing the tutorial, write down:
 
 The controller is moving. It isn't moving fast, and it isn't moving toward anything yet.
 
-"Every level that controller climbs unlocks something," your collaborator says. "Extensions, bigger creeps, more energy capacity. Right now you're upgrading it because you can. Next episode, you're upgrading it because you need what's on the other side."
+"Every level that controller climbs unlocks something," your collaborator says. "Extensions, bigger creeps, more energy capacity. Right now you're upgrading it because you can. Next episode, you're upgrading it because you actually need what's on the other side — the difference between a vanity metric and a real one."
 
 See `docs/roadmap.md` for the full season.
