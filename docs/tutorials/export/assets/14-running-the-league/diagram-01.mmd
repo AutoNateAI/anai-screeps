@@ -1,0 +1,8 @@
+flowchart LR
+    A(["A"]) --> R1{"Round 1"}
+    B(["B"]) --> R1
+    C(["C"]) --> R2{"Round 1"}
+    D(["D"]) --> R2
+    R1 --> F{"Round 2 — Final"}
+    R2 --> F
+    F --> W(["Winner"])

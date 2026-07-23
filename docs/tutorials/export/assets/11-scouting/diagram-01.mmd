@@ -1,0 +1,6 @@
+flowchart LR
+    Idle([Scout at target room]) --> Record[recordIntel: write Memory.rooms snapshot]
+    Record --> Next[Advance targetIndex]
+    Next --> Travel[moveTo next room in Memory.scoutTargets]
+    Travel --> Idle
+    Record -.data used later by.-> Decision["Your expansion decision — read anytime, no creep required"]

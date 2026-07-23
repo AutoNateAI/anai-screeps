@@ -1,0 +1,4 @@
+flowchart TD
+    Decide{"Do you want to own this room, or just work in it?"}
+    Decide -- "Own it (found a colony)" --> Claim["claimController — costs a GCL slot, permanent"]
+    Decide -- "Just work in it (remote mining)" --> Reserve["reserveController — free, must be refreshed every tick a creep is present"]

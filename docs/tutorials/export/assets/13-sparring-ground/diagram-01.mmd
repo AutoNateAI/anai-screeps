@@ -1,0 +1,7 @@
+flowchart TD
+    Start(["sparring-loop.sh room waves delay"]) --> Fire["curl the wave endpoint"]
+    Fire --> Log[Log the response]
+    Log --> More{More waves left?}
+    More -- Yes --> Sleep["sleep delay seconds"]
+    Sleep --> Fire
+    More -- No --> Done(["Loop finished"])

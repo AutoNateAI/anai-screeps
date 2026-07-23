@@ -1,0 +1,7 @@
+flowchart TD
+    Main["main.js: loop()"] --> Clean[Clean up dead creep memory]
+    Clean --> Spawn[spawnMissingRoles]
+    Spawn --> Dispatch{"For each creep: what's memory.role?"}
+    Dispatch -- harvester --> RH["role.harvester.js: run(creep)"]
+    Dispatch -- upgrader --> RU["role.upgrader.js: run(creep)"]
+    Dispatch -- "future roles" --> RN["role.*.js: run(creep)"]

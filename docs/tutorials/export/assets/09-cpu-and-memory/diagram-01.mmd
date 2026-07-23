@@ -1,0 +1,4 @@
+flowchart TD
+    Data{New data to store} --> Survive{Must it survive a global reset?}
+    Survive -- Yes --> Mem["Memory — serialized every tick, costs CPU, persists"]
+    Survive -- No --> Cache["Plain object at module scope — free between ticks, wiped on reset, cheap to recompute"]

@@ -1,0 +1,5 @@
+flowchart LR
+    Source(("Source")) -->|harvest, never moves| Miner[Miner]
+    Miner -->|energy drops into| Container[Container]
+    Container -->|withdraw| Hauler[Hauler]
+    Hauler -->|transfer| Extension["Extension / Spawn"]

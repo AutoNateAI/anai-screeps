@@ -1,0 +1,7 @@
+flowchart TD
+    Tick([runTowers per tick]) --> ForEach{For each owned tower}
+    ForEach --> Hostile{Hostile creep in range?}
+    Hostile -- Yes --> Attack[tower.attack closest hostile]
+    Hostile -- No --> Damaged{Any damaged owned structure?}
+    Damaged -- Yes --> Repair[tower.repair it]
+    Damaged -- No --> Idle([Do nothing this tick])

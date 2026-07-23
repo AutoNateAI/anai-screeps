@@ -1,0 +1,8 @@
+flowchart TD
+    Tick([Defender tick]) --> Hostile{Hostile present?}
+    Hostile -- No --> Rampart[Hold rampart tile]
+    Hostile -- Yes --> Range{Range to hostile}
+    Range -->|"<= 3"| Ranged["rangedAttack (10 dmg)"]
+    Range -->|"<= 1"| Melee["attack (30 dmg)"]
+    Range -->|"> 1"| Close[moveTo hostile]
+    Ranged -.can also trigger.-> Melee

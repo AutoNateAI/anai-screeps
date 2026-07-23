@@ -1,0 +1,14 @@
+flowchart TD
+    Start([Tick runs]) --> HasCreep{Does Harvester1 exist?}
+    HasCreep -- No --> End([Do nothing this tick])
+    HasCreep -- Yes --> HasRoom{Free capacity > 0?}
+    HasRoom -- Yes --> Harvest[harvest source]
+    Harvest --> InRange1{In range?}
+    InRange1 -- No --> Move1[moveTo source]
+    InRange1 -- Yes --> End
+    Move1 --> End
+    HasRoom -- No --> Transfer[transfer energy to Spawn1]
+    Transfer --> InRange2{In range?}
+    InRange2 -- No --> Move2[moveTo Spawn1]
+    InRange2 -- Yes --> End
+    Move2 --> End

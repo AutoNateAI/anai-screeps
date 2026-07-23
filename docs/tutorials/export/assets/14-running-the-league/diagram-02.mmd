@@ -1,0 +1,8 @@
+flowchart TD
+    Submit["Submission + SUBMISSION.md"] --> Lock["git tag at deadline"]
+    Lock --> Cheat{"Passes anti-cheat checklist?"}
+    Cheat -- No --> DQ(["Disqualified — recorded, not patched"])
+    Cheat -- Yes --> Bracket["Placed in bracket"]
+    Bracket --> Benchmark["sparring-loop.sh run, identical params"]
+    Benchmark --> Score["Scored via league/scoring-rubric.md"]
+    Score --> Publish["Result published to league/results/"]

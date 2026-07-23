@@ -1,0 +1,9 @@
+flowchart TD
+    Call([getAssignedSource called]) --> HasId{"creep.memory.sourceId set?"}
+    HasId -- Yes --> Lookup[Game.getObjectById it]
+    HasId -- No --> FindAll[Find all sources in room]
+    FindAll --> Count[Count existing claims per source]
+    Count --> Sort[Sort sources: fewest claims first]
+    Sort --> Assign["Store sources[0].id in memory"]
+    Assign --> Lookup
+    Lookup --> Return([Return the source object])
