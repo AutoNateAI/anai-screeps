@@ -211,8 +211,26 @@ Expected result: `{"ok":1,"message":"sparring-ground mod is loaded"}`.
 
 ```yaml
 bots:
-  simplebot: screepsbot-zeswarm
+  zeswarm: screepsbot-zeswarm
   tooangel: screeps-bot-tooangel
+```
+
+If the local `screeps-server/node_modules/` folder is rebuilt outside the launcher, install the bot packages directly:
+
+```sh
+cd screeps-server
+npm install screepsbot-zeswarm screeps-bot-tooangel
+```
+
+The local `mods.json` bot map should expose these CLI names:
+
+```json
+{
+  "bots": {
+    "zeswarm": "node_modules/screepsbot-zeswarm/src",
+    "tooangel": "node_modules/screeps-bot-tooangel/src"
+  }
+}
 ```
 
 - `screepsbot-zeswarm` ([AlinaNova21/ZeSwarm](https://github.com/AlinaNova21/ZeSwarm)) is the bot already sketched in this repo's original planning notes (`input_convos/chatgpt/convo_000.md`) — a general-purpose economy bot.
@@ -228,7 +246,7 @@ docker exec -it autonate-screeps screeps-launcher cli
 bots.spawn('tooangel', 'W3N1')
 ```
 
-Replace `'W3N1'` with a real unowned room name, ideally a few rooms away from `autonate`'s colony so it has room to grow before the two colonies' territory overlaps. Optional settings: `bots.spawn('tooangel', 'W3N1', { cpu: 100, gcl: 1 })`. Swap `'tooangel'` for `'simplebot'` to place the other one instead — nothing stops you from running both.
+Replace `'W3N1'` with a real unowned room name, ideally a few rooms away from `autonate`'s colony so it has room to grow before the two colonies' territory overlaps. Optional settings: `bots.spawn('tooangel', 'W3N1', { cpu: 100, gcl: 1 })`. Swap `'tooangel'` for `'zeswarm'` to place the other one instead — nothing stops you from running both.
 
 This is a different kind of NPC than the sparring-ground mod's invader waves:
 

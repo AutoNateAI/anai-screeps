@@ -12,7 +12,7 @@ mods:
   - screepsmod-admin-utils
 
 bots:
-  simplebot: screepsbot-zeswarm
+  zeswarm: screepsbot-zeswarm
   tooangel: screeps-bot-tooangel
 
 serverConfig:

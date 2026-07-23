@@ -93,6 +93,10 @@ flowchart TD
 | 13 | The Sparring Ground | Turn one Invasion-panel test into a repeatable wave-based training loop on this repo's own local server — no internet, no Steam, no Arena required. | `docs/tutorials/13-sparring-ground.md` | Live |
 | 14 | Open the Gates | AutoNate stops playing solo and starts running the league: submissions, scoring, replays, and the next architect's drop pod. | `docs/tutorials/14-running-the-league.md` | Live |
 
+## Local Competition Modules
+
+`docs/competitions/README.md` turns the tutorial ladder into replayable NPC/bot challenges. These modules are designed for program labs: short setup, explicit pressure, measurable win condition, reflection, and a clean replay path.
+
 ## Notes for Future Episodes
 
 - Each episode's cold open should pick up exactly where the previous episode's closing hook left off — no time skips without a reason.

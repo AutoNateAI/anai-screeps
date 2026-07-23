@@ -109,6 +109,11 @@ The full season is written — see `docs/roadmap.md` for loglines and arc groupi
 - `league/README.md` — submission structure used by Episode 14
 - `league/scoring-rubric.md` — the rubric template for scoring a match
 
+## Local Competitions
+
+- `docs/competitions/README.md` — replayable NPC/bot competition modules for teaching program skillsets locally
+- `docs/competitions/module-template.md` — template for new modules
+
 ## Journal
 
 - `docs/journal/TEMPLATE.md` — copy this for your own debugging-session entries (Episode 10)
